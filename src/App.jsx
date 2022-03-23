@@ -1,5 +1,4 @@
- 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -7,7 +6,9 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Messages from './pages/Messages/Messages'
 import * as authService from './services/authService'
+import AddPost from './pages/AddPost/AddPost'
 
 
 // Have fun, y'all. ;)
@@ -19,12 +20,17 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
-    navigate('/')
+    navigate('login')
   }
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+
+  useEffect(() => {
+    user ? navigate('/') : navigate('login')
+  }, [user])
 
   return (
     <>
@@ -40,12 +46,13 @@ const App = () => {
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
         <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
+          path="/messages"
+          element={<Messages />}
         />
+
         <Route
-          path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          path="/addpost"
+          element={<AddPost />}
         />
       </Routes>
     </>
