@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     user ? navigate('/') : navigate('login')
-  }, [])
+  }, [user])
 
   return (
     <>
