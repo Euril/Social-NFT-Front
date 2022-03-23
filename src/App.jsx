@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -15,12 +15,17 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
-    navigate('/')
+    navigate('login')
   }
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+
+  useEffect(() => {
+    user ? navigate('/') : navigate('login')
+  }, [])
 
   return (
     <>
