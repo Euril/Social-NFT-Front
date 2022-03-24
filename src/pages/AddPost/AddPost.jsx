@@ -24,7 +24,7 @@ const AddPost = (props) => {
     postFormData.append('caption', formData.caption)
     console.log('sanity check - in add post - handle submit')
     console.log('post form data: ', postFormData)
-    props.handleAddPost(formData)
+    props.handleAddPost(postFormData)
     console.log('form Data in addpost', formData)
   }
 

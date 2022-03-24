@@ -3,7 +3,7 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/posts`
 
 
 function create(post) {
-  console.log(post)
+  console.log('post: ',typeof post)
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
