@@ -11,9 +11,10 @@ const AddPost = (props) => {
 
 
   const handleChange = evt => {
-    console.log('hello')
+    console.log(evt.target.caption)
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
+
 
   const handleSubmit = evt => {
     evt.preventDefault()
@@ -23,15 +24,15 @@ const AddPost = (props) => {
     postFormData.append('caption', formData.caption)
     console.log('sanity check - in add post - handle submit')
     console.log('post form data: ', postFormData)
-    console.log('form Data in addpost', formData)
     props.handleAddPost(formData)
+    console.log('form Data in addpost', formData)
   }
 
   return (
     <div>
       <form action="" ref={formElement} onSubmit={handleSubmit} onChange={handleChange}>
         <input type="file" name="images" />
-        <input type="text" placeholder="caption" name="caption"/>
+        <input type="text" placeholder="caption" name="caption" />
         <button type="submit">submit</button>
       </form>
   
