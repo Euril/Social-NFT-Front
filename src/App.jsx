@@ -11,6 +11,9 @@ import * as authService from './services/authService'
 import * as postService from './services/postService'
 import AddPost from './pages/AddPost/AddPost'
 
+
+// Have fun, y'all. ;)
+
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
