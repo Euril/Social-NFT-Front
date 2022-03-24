@@ -31,6 +31,7 @@ const App = () => {
   const handleAddPost = async (newPostData) => {
     console.log('sanity check handleAddPost', newPostData)
     const newPost = await postService.create(newPostData)
+    console.log('newPost: ',newPost)
   }
 
 

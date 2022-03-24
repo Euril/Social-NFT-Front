@@ -7,10 +7,11 @@ function create(post) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
-      'content-type': 'application/json',
+      //'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`,
     },
-    body: JSON.stringify(post)
+   // body: JSON.stringify(post)
+    body: post
   })
   .then(res => res.json())
 }
