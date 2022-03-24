@@ -8,6 +8,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Messages from './pages/Messages/Messages'
 import * as authService from './services/authService'
+import * as postService from './services/postService'
 import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
@@ -22,6 +23,11 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddPost = async (newPostData) => {
+    console.log('sanity check handleAddPost', newPostData)
+    const newPost = await postService.create(newPostData)
   }
 
 
@@ -49,7 +55,7 @@ const App = () => {
 
         <Route
           path="/addpost"
-          element={<AddPost />}
+          element={<AddPost handleAddPost={handleAddPost}/>}
         />
       </Routes>
     </>
