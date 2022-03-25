@@ -21,7 +21,10 @@ const Landing = ({ user, getPosts }) => {
       {console.log(newsFeed)}
       <ul>
         {newsFeed?.map(post => (
-          <li>{post?.images}</li>
+          <img
+            src={post?.images}
+            alt='post'
+          />
         ))}
       </ul>
     </main>
