@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ user, handleLogout, profile }) => {
+  console.log('profile in nav bar', profile)
+  
   return (
     <>
       {user ?
@@ -12,6 +14,7 @@ const NavBar = ({ user, handleLogout }) => {
             <li><Link to="/addpost">Add Post</Link></li>
             <li><Link to="/explore">Explore</Link></li>
             <li><Link to="/notifications">Notifications</Link></li>
+            <li><Link to={`${profile.email}`}>Profile</Link></li>
             <li><Link to="" onClick={handleLogout}>Log Out</Link></li>
           </ul>
         </nav>

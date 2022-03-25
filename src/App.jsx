@@ -7,6 +7,7 @@ import Landing from './pages/Landing/Landing'
 import Explore from './pages/Explore/Explore'
 import SearchResults from './pages/SearchResults/SearchResults'
 import Profiles from './pages/Profiles/Profiles'
+import Profile from './pages/Profile/Profile'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Messages from './pages/Messages/Messages'
 import * as authService from './services/authService'
@@ -29,10 +30,16 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      profileService.getProfile(user.profile)
+      console.log('use Effect testing:', user.profile, user.profile?.name)
+      console.log(user)
+      console.log('user.name: ', user.name)
+      profileService.getProfile(user.name)
       .then(profileData => {
         setProfile(profileData)
       })
+    console.log('profile in useEffect Appjs', profile)
+    } else {
+      navigate('login')
     }
   }, [user])
 
@@ -57,13 +64,13 @@ const App = () => {
   //   return posts
   // }
 
-  useEffect(() => {
-    user ? navigate('/') : navigate('login')
-  }, [user])
+  // useEffect(() => {
+  //   user ? navigate('/') : navigate('login')
+  // }, [user])
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} /> 
         <Route
@@ -91,6 +98,11 @@ const App = () => {
         <Route
           path="/explore"
           element={<Explore user={user}/>}
+        />
+
+        <Route
+          path=':email'
+          element={<Profile />}
         />
       </Routes>
     </>

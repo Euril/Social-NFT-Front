@@ -9,8 +9,9 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-function getProfile(id) {
-  return fetch(`${BASE_URL}/${id}`, {
+function getProfile(email) {
+  console.log('email in getProfile', email)
+  return fetch(`${BASE_URL}/${email}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })
   .then(res => res.json())
