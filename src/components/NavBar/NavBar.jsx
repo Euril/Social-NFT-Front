@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const NavBar = ({ user, handleLogout, profile }) => {
-  console.log('profile in nav bar', profile)
+  //console.log('profile in nav bar', profile)
   
   return (
     <>

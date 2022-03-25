@@ -30,14 +30,14 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      console.log('use Effect testing:', user.profile, user.profile?.name)
-      console.log(user)
-      console.log('user.name: ', user.name)
-      profileService.getProfile(user.name)
+      //console.log('use Effect testing:', user.profile, user.profile?.name)
+      //console.log(user)
+      //console.log('user.name: ', user.name)
+      profileService.getProfile(user.email)
       .then(profileData => {
         setProfile(profileData)
       })
-    console.log('profile in useEffect Appjs', profile)
+   // console.log('profile in useEffect Appjs', profile)
     } else {
       navigate('login')
     }
