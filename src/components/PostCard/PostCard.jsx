@@ -1,7 +1,5 @@
 const PostCard = ({post}) => {
 
-
-
   return (
     <div>
       <hr />
@@ -10,7 +8,7 @@ const PostCard = ({post}) => {
             alt='post'
           />
           <p>{post?.caption}</p>
-          <p>Posted by: {post.author}</p>
+          <p>Posted by: {post.author.name}</p>
           <p>Likes: {post.numLikes}</p>
           <p></p>
     </div>
