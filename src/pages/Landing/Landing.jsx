@@ -4,8 +4,6 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
- 
-
 const Landing = ({ user }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
@@ -18,8 +16,6 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       <h1>hello, {user ? user.name : 'friend'}</h1>
-      {console.log(newsFeed)}
-      
       {
         newsFeed  ? 
 
