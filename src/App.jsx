@@ -4,11 +4,13 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
+import SearchResults from './pages/SearchResults/SearchResults'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Messages from './pages/Messages/Messages'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
+import * as profileService from './services/profileService'
 import AddPost from './pages/AddPost/AddPost'
 
 
@@ -16,8 +18,23 @@ import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  // [posts, setPosts] = useState([])
+
+  const [posts, setPosts] = useState([])
+  const [profile, setProfile] = useState({})
+
+  
+
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (user) {
+      profileService.getProfile(user.profile)
+      .then(profileData => {
+        setProfile(profileData)
+      })
+    }
+  }, [user])
+
 
   const handleLogout = () => {
     authService.logout()
@@ -55,6 +72,10 @@ const App = () => {
         <Route
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/search"
+          element={<SearchResults profile={profile} />}
         />
         <Route
           path="/messages"
