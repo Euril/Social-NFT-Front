@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
+import Explore from './pages/Explore/Explore'
 import SearchResults from './pages/SearchResults/SearchResults'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
@@ -85,6 +86,11 @@ const App = () => {
         <Route
           path="/addpost"
           element={<AddPost handleAddPost={handleAddPost}/>}
+        />
+
+        <Route
+          path="/explore"
+          element={<Explore user={user}/>}
         />
       </Routes>
     </>
