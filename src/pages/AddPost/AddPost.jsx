@@ -36,7 +36,7 @@ const AddPost = (props) => {
   return (
     <div>
       <form action="" ref={formElement} onSubmit={handleSubmit} >
-        <input type="file" name="images" onChange={handleChangePhoto}/>
+        <input type="file" name="images" onChange={handleChangePhoto} required/>
         <input type="text" placeholder="caption" name="caption" onChange={handleChange} />
         <button type="submit">submit</button>
       </form>

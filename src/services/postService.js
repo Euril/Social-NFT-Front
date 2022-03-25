@@ -19,6 +19,7 @@ function create(post) {
 function getNewsFeed() {
   return fetch(BASE_URL, {
     headers: {
+      //'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     }
   })
