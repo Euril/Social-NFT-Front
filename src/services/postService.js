@@ -16,6 +16,16 @@ function create(post) {
   .then(res => res.json())
 }
 
+function getNewsFeed() {
+  return fetch(BASE_URL, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
+  getNewsFeed
 }

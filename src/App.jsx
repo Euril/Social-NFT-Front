@@ -16,6 +16,7 @@ import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [posts, setPosts] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -34,6 +35,9 @@ const App = () => {
     console.log('newPost: ',newPost)
   }
 
+  const getPosts = () => {
+    return posts
+  }
 
   useEffect(() => {
     user ? navigate('/') : navigate('login')
@@ -43,7 +47,7 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} getPosts={getPosts}/>} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
