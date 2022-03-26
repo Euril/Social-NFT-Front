@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 const NavBar = ({ user, handleLogout, profile }) => {
   //console.log('profile in nav bar', profile)
+  const [params, setParams] = useState(useParams())
+
+  useEffect(()=>{
+
+  }, [params])
   
   return (
     <>
