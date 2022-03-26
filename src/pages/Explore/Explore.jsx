@@ -1,6 +1,6 @@
 import styles from './Explore.module.css'
 import { useEffect, useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, useLocation } from 'react-router-dom'
 import { getExploreFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
@@ -8,12 +8,21 @@ const Explore = ({ user }) => {
 
 const [exploreFeed, setExploreFeed] = useState(null)
 const navigate = useNavigate()
+const location = useLocation()
+const getLastWordInURL = () => location.pathname.split('/').at(-1) 
+let lastWordInURL = getLastWordInURL
 
 useEffect(() => {
-  console.log('in use effect in explore')
- getExploreFeed()
- .then(fetchedExploreFeed => setExploreFeed(fetchedExploreFeed))
-}, [])
+  //lastWordInURL = getLastWordInURL()
+  //console.log('last item in URL: ', lastWordInURL)
+  //if (lastWordInURL !== 'explore') navigate(`/${lastWordInURL}`)
+  //console.log('in use effect in explore')
+ if (!exploreFeed) {
+  getExploreFeed()
+  .then(fetchedExploreFeed => setExploreFeed(fetchedExploreFeed))
+ }
+
+}, [location])
 
 return (
   <main className={styles.container}>
