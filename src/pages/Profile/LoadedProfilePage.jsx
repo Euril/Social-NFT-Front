@@ -1,7 +1,7 @@
 import OurProfilePage from "./OurProfilePage"
 import OthersProfilePage from "./OthersProfilePage"
 
-const LoadedProfilePage = ({profiles, loggedInUser, profToRender, ourProfile, handleFollow, handleUnfollow}) => {
+const LoadedProfilePage = ({profiles, loggedInUser, profToRender, ourProfile, handleFollow, handleUnfollow, profile}) => {
 
     return (
         <div>
@@ -12,8 +12,8 @@ const LoadedProfilePage = ({profiles, loggedInUser, profToRender, ourProfile, ha
 
                 <OurProfilePage 
                     loggedInUser={loggedInUser} 
-                    profToRender={profToRender} 
-                    ourProfile={ourProfile}
+                    profToRender={profToRender}
+                    profile={profile}
                 />
                 
                 :

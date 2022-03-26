@@ -47,14 +47,18 @@ const App = () => {
   }
 
   const handleAddPost = async (newPostData) => {
-    return await postService.create(newPostData)
+    const newPost = await postService.create(newPostData)
+    console.log("🚀 ~ newPost", newPost);
+    profile.posts.push(newPost)
+    setProfile(profile)
+    console.log("🚀 ~ profile", profile);
   }
 
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} /> 
+        <Route path="/" element={<Landing user={user} profile={profile} />} /> 
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -74,17 +78,17 @@ const App = () => {
 
         <Route
           path="/addpost"
-          element={<AddPost handleAddPost={handleAddPost}/>}
+          element={<AddPost handleAddPost={handleAddPost} profile={profile}/>}
         />
 
         <Route
           path="/explore"
-          element={<Explore user={user}/>}
+          element={<Explore user={user} profile={profile}/>}
         />
 
         <Route
           path=':email'
-          element={<Profile loggedInUser={user}/>}
+          element={<Profile loggedInUser={user} profile={profile}/>}
         />
       </Routes>
     </>

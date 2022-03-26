@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Landing = ({ user }) => {
+const Landing = ({ user, profile }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
   

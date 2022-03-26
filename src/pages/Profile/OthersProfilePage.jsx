@@ -19,6 +19,9 @@ function OthersProfilePage ({profiles, handleFollow, profToRender, loggedInUser,
             <h3>Email: {profToRender.email}</h3>
             <h3>Following: {profToRender.following?.length}</h3>
             <h3>Followers: {profToRender.followers?.length}</h3>
+            {profToRender.posts?.map(post => (
+              <img src={`${post?.images}`} alt="profile post" />
+            ))}
         </div>
     </div>
   )
