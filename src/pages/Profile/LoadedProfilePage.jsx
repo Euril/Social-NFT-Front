@@ -11,21 +11,21 @@ const LoadedProfilePage = ({profiles, loggedInUser, profToRender, ourProfile, ha
                 loggedInUser.email === profToRender.email ?
 
                 <OurProfilePage 
-                loggedInUser={loggedInUser} 
-                profToRender={profToRender} 
-                ourProfile={ourProfile}
+                    loggedInUser={loggedInUser} 
+                    profToRender={profToRender} 
+                    ourProfile={ourProfile}
                 />
                 
                 :
 
                 
                 <OthersProfilePage
-                profiles={profiles} 
-                loggedInUser={loggedInUser} 
-                ourProfile={ourProfile}
-                profToRender={profToRender} 
-                handleUnfollow={handleUnfollow} 
-                handleFollow={handleFollow}
+                    profiles={profiles} 
+                    loggedInUser={loggedInUser} 
+                    ourProfile={ourProfile}
+                    profToRender={profToRender} 
+                    handleUnfollow={handleUnfollow} 
+                    handleFollow={handleFollow}
                 />
             }
 
