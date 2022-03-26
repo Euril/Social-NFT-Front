@@ -30,15 +30,6 @@ const Landing = ({ user }) => {
         <h1>Loading...</h1>
 
       }
-      
-      <ul>
-        {/* {newsFeed?.map(post => (
-          <img
-            src={post.images}
-            alt='post'
-          />
-        ))} */}
-      </ul>
     </main>
   )
 }

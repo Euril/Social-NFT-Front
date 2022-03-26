@@ -20,24 +20,16 @@ import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-
-  const [posts, setPosts] = useState([])
   const [profile, setProfile] = useState({})
-
-  
 
   const navigate = useNavigate()
 
   useEffect(() => {
     if (user) {
-      //console.log('use Effect testing:', user.profile, user.profile?.name)
-      //console.log(user)
-      //console.log('user.name: ', user.name)
       profileService.getProfile(user.email)
       .then(profileData => {
         setProfile(profileData)
       })
-   // console.log('profile in useEffect Appjs', profile)
     } else {
       navigate('login')
     }
@@ -55,18 +47,8 @@ const App = () => {
   }
 
   const handleAddPost = async (newPostData) => {
-    console.log('sanity check handleAddPost', newPostData)
-    const newPost = await postService.create(newPostData)
-    console.log('newPost: ',newPost)
+    return await postService.create(newPostData)
   }
-
-  // const getPosts = () => {
-  //   return posts
-  // }
-
-  // useEffect(() => {
-  //   user ? navigate('/') : navigate('login')
-  // }, [user])
 
   return (
     <>
