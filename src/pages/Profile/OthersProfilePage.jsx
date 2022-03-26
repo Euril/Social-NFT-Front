@@ -1,15 +1,18 @@
-function OthersProfilePage (props) {
+import FollowUnfollowButton from "../../components/ProfilePageComponents/FollowUnfollowButton"
+
+function OthersProfilePage ({handleFollow, profToRender, loggedInUser, handleUnfollow, ourProfile}) {
+  console.log('others profile page our profile: ', ourProfile)
+
+  
 
   return (
     <div>
-          <form action="" onSubmit={props.handleFollow}>
-            <button type="submit">Follow</button>
-          </form>
+          <FollowUnfollowButton handleUnfollow={handleUnfollow} handleFollow={handleFollow}  profToRender={profToRender} loggedInUser={loggedInUser} ourProfile={ourProfile}/>
           <div>
-            <h3>Email: {props.profToRender.email}</h3>
-            <h3>Following: {props.profToRender.following?.length}</h3>
-            <h3>Followers: {props.profToRender.followers?.length}</h3>
-            <h3>Name: {props.profToRender.name}</h3>  
+            <h3>Name: {profToRender.name}</h3>  
+            <h3>Email: {profToRender.email}</h3>
+            <h3>Following: {profToRender.following?.length}</h3>
+            <h3>Followers: {profToRender.followers?.length}</h3>
         </div>
     </div>
   )
