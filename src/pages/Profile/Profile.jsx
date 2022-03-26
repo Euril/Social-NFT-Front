@@ -7,7 +7,7 @@ import OurProfilePage from "./OurProfilePage";
 import LoadedProfilePage from "./LoadedProfilePage";
 
 
-const Profile = ({loggedInUser}) => {
+const Profile = ({loggedInUser, profile}) => {
   const [profToRender, setProfToRender] = useState()
   const [ourProfile, setOurProfile] = useState()
   const [profiles, setProfiles] = useState()
@@ -67,6 +67,7 @@ const Profile = ({loggedInUser}) => {
           ourProfile={ourProfile} 
           loggedInUser={loggedInUser} 
           profToRender={profToRender} 
+          profile={profile}
         />
 
         :
