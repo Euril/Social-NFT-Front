@@ -102,7 +102,7 @@ const App = () => {
 
         <Route
           path=':email'
-          element={<Profile />}
+          element={<Profile loggedInUser={user}/>}
         />
       </Routes>
     </>
