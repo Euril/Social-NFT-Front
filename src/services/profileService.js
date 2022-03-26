@@ -30,9 +30,22 @@ function follow(profiles) {
   .then(res => res.json())
 }
 
+function unfollow(profiles) {
+  console.log('coming in to unfollow function: ', profiles )
+  return fetch(`${BASE_URL}/unfollow`, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+    body: JSON.stringify(profiles)
+  })
+  .then(res => res.json())
+}
 
 export { 
   getAllProfiles,
   getProfile,
   follow,
+  unfollow,
 }
