@@ -26,7 +26,7 @@ const Profile = ({loggedInUser}) => {
     getProfile(otherEmail).then(profile => setProfToRender(profile))
     getProfile(ourEmail).then(profile => {setOurProfile(profile)})
     
-  }, [location])
+  }, [location, profiles])
 
   
   
@@ -42,7 +42,7 @@ const Profile = ({loggedInUser}) => {
         followeeEmail : followeeEmail
       }
       
-      ).then(profiles => setProfiles(profiles))
+      ).then(profiles => {setProfiles(profiles); setProfToRender(profiles.followee); setOurProfile(profiles.follower)})
   }
 
 
@@ -58,7 +58,7 @@ const Profile = ({loggedInUser}) => {
         followeeEmail : followeeEmail
       }
       
-      ).then(profiles => setProfiles(profiles))
+      ).then(profiles => {setProfiles(profiles); setProfToRender(profiles.followee); setOurProfile(profiles.follower)})
   }
 
   return (
@@ -67,7 +67,15 @@ const Profile = ({loggedInUser}) => {
         
         profToRender && ourProfile ?
 
-        <LoadedProfilePage handleFollow={handleFollow} handleUnfollow={handleUnfollow} ourProfile={ourProfile} loggedInUser={loggedInUser} profToRender={profToRender} />
+        <LoadedProfilePage          
+          setProfToRender={setProfToRender} 
+          profiles={profiles} 
+          handleFollow={handleFollow} 
+          handleUnfollow={handleUnfollow} 
+          ourProfile={ourProfile} 
+          loggedInUser={loggedInUser} 
+          profToRender={profToRender} 
+        />
 
         :
 
