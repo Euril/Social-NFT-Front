@@ -17,9 +17,22 @@ function getProfile(email) {
   .then(res => res.json())
 }
 
+function follow(profiles) {
+  console.log('coming in to follow function: ', profiles )
+  return fetch(`${BASE_URL}/follow`, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+    body: JSON.stringify(profiles)
+  })
+  .then(res => res.json())
+}
 
 
 export { 
   getAllProfiles,
-  getProfile
+  getProfile,
+  follow,
 }

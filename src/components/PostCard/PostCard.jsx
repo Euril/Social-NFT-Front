@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const PostCard = ({post}) => {
 
   return (
@@ -10,7 +12,7 @@ const PostCard = ({post}) => {
           <p>{post?.caption}</p>
           <p>Posted by: {post.author.name}</p>
           <p>Likes: {post.numLikes}</p>
-          <p></p>
+          <p><Link to={post.author.email}>{post.author.email}</Link> </p>
     </div>
   )
 }
