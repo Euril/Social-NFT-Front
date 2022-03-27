@@ -73,7 +73,11 @@ const App = () => {
         />
         <Route
           path="/messages"
-          element={<Messages />}
+          element={<Messages profile={profile}/>}
+        />
+        <Route
+          path="/messages/:id"
+          element={<Messages profile={profile}/>}
         />
 
         <Route
