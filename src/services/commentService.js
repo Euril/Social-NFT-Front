@@ -16,6 +16,22 @@ function createComment(comment) {
     .then(res => res.json())
   }
 
+
+  function toggleLike(likeInfo) {
+    //console.log(profileID)
+    return fetch(`${BASE_URL}/likes`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+      body: JSON.stringify(likeInfo)
+      //body: comment
+    })
+    .then(res => res.json())
+  }
+
 export {
-    createComment
+    createComment,
+    toggleLike
 }
