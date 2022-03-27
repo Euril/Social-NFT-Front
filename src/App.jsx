@@ -20,24 +20,16 @@ import AddPost from './pages/AddPost/AddPost'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-
-  const [posts, setPosts] = useState([])
   const [profile, setProfile] = useState({})
-
-  
 
   const navigate = useNavigate()
 
   useEffect(() => {
     if (user) {
-      //console.log('use Effect testing:', user.profile, user.profile?.name)
-      //console.log(user)
-      //console.log('user.name: ', user.name)
       profileService.getProfile(user.email)
       .then(profileData => {
         setProfile(profileData)
       })
-   // console.log('profile in useEffect Appjs', profile)
     } else {
       navigate('login')
     }
@@ -55,24 +47,18 @@ const App = () => {
   }
 
   const handleAddPost = async (newPostData) => {
-    console.log('sanity check handleAddPost', newPostData)
     const newPost = await postService.create(newPostData)
-    console.log('newPost: ',newPost)
+    console.log("🚀 ~ newPost", newPost);
+    profile.posts.push(newPost)
+    setProfile(profile)
+    console.log("🚀 ~ profile", profile);
   }
-
-  // const getPosts = () => {
-  //   return posts
-  // }
-
-  // useEffect(() => {
-  //   user ? navigate('/') : navigate('login')
-  // }, [user])
 
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} /> 
+        <Route path="/" element={<Landing user={user} profile={profile} />} /> 
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -92,17 +78,17 @@ const App = () => {
 
         <Route
           path="/addpost"
-          element={<AddPost handleAddPost={handleAddPost}/>}
+          element={<AddPost handleAddPost={handleAddPost} profile={profile}/>}
         />
 
         <Route
           path="/explore"
-          element={<Explore user={user}/>}
+          element={<Explore user={user} profile={profile}/>}
         />
 
         <Route
           path=':email'
-          element={<Profile loggedInUser={user}/>}
+          element={<Profile loggedInUser={user} profile={profile}/>}
         />
       </Routes>
     </>

@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Landing = ({ user }) => {
+const Landing = ({ user, profile }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
   
@@ -30,15 +30,6 @@ const Landing = ({ user }) => {
         <h1>Loading...</h1>
 
       }
-      
-      <ul>
-        {/* {newsFeed?.map(post => (
-          <img
-            src={post.images}
-            alt='post'
-          />
-        ))} */}
-      </ul>
     </main>
   )
 }
