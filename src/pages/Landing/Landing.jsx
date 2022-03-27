@@ -21,7 +21,7 @@ const Landing = ({ user, profile }) => {
 
         <div className="post-card-container">
           {newsFeed.map(post => (
-              <PostCard post={post}  />
+              <PostCard post={post} profile={profile} />
           ))}
         </div>
 

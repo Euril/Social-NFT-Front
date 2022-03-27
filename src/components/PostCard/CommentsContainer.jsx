@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react"
 import { createComment } from '../../services/commentService'
+import CommentCard from "./CommentCard"
 
-const CommentsContainer = ({post}) => {
+const CommentsContainer = ({post, profile}) => {
 
     const [commentFormData, setCommentFormData] = useState()
     const [postState, setPostState] = useState(post)
@@ -20,6 +21,8 @@ const CommentsContainer = ({post}) => {
        createComment({commentFormData, postID: postState._id})
        .then(newPostState => setPostState(newPostState))
     }
+
+
     
   
 
@@ -33,7 +36,7 @@ const CommentsContainer = ({post}) => {
             <ul>
             {
                 postState.comments?.map(comment => (
-                <li>{comment.text} -by: {comment.author}</li>
+                    <CommentCard comment={comment} postID={post._id} profileID={profile._id}/>
                 ))
             }
             </ul>

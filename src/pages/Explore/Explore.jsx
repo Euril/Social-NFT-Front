@@ -4,7 +4,7 @@ import { useNavigate, Navigate, useLocation } from 'react-router-dom'
 import { getExploreFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Explore = ({ user }) => {
+const Explore = ({ user, profile }) => {
 
 const [exploreFeed, setExploreFeed] = useState(null)
 const navigate = useNavigate()
@@ -32,7 +32,7 @@ return (
 
       <div className="post-card-container">
         {exploreFeed.map(post => (
-            <PostCard post={post}  />
+            <PostCard post={post}  profile={profile}/>
         ))}
       </div>
 

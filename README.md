@@ -1,4 +1,4 @@
-# Decoupled MERN Stack with JWT Auth Template - Front End
+# Social NFT 
 
 This is the front end of a decoupled MERN Stack app that includes JWT Authentication.
 

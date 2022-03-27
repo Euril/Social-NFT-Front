@@ -1,4 +1,4 @@
-import { post } from "jquery";
+
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
   console.log("🚀 ~ profile", profile.posts);
