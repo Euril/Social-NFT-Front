@@ -1,19 +1,27 @@
 import FollowUnfollowButton from "../../components/ProfilePageComponents/FollowUnfollowButton"
 import { useState, useEffect } from "react"
 import { follow } from "../../services/profileService"
+import { useNavigate } from "react-router-dom"
 
 function OthersProfilePage ({profiles, handleFollow, profToRender, loggedInUser, handleUnfollow, ourProfile}) {
 
-  useEffect(()=>{
-      console.log('profiles changed and/or page loaded', profiles)
+  const navigate = useNavigate()
+  // useEffect(()=>{
+  //     console.log('profiles changed and/or page loaded', profiles)
 
-  },[profiles])
+  // },[profiles])
+  
+  const handleMessageButtonClick = () => {
+    //console.log('sanity check - message button pressed')
+    navigate(`/messages/${profToRender._id}`)
+  }
 
   
 
   return (
     <div>
           <FollowUnfollowButton handleUnfollow={handleUnfollow} handleFollow={handleFollow}  profToRender={profToRender} loggedInUser={loggedInUser} ourProfile={ourProfile}/>
+          <button onClick={handleMessageButtonClick}>Message  </button>
           <div>
             <h3>Name: {profToRender.name}</h3>  
             <h3>Email: {profToRender.email}</h3>

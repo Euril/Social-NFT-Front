@@ -10,7 +10,7 @@ const CommentsContainer = ({post, profile}) => {
 
     const commentFormElement = useRef()
     useEffect(()=> {
-        console.log('in useEffect, postState: ', postState)
+        //console.log('in useEffect, postState: ', postState)
     }, [postState])
     
     const handleCommentFormChange = evt => {
