@@ -1,0 +1,27 @@
+.navContainer {
+    display: flex;
+    height: 7.5rem;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    padding-left: 100px;
+}
+
+.rightNav {
+
+    padding-right: 90px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i {
+    justify-content: space-between;
+    padding: 20px 20px 20px 5px;
+}

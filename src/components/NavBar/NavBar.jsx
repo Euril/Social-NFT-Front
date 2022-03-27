@@ -1,23 +1,29 @@
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import styles from './NavBar.module.css'
 
 const NavBar = ({ user, handleLogout, profile }) => {
 
   return (
     <>
       {user ?
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/messages">Messages</Link></li>
-            <li><Link to="/addpost">Add Post</Link></li>
-            <li><Link to="/explore">Explore</Link></li>
-            <li><Link to="/notifications">Notifications</Link></li>
-            <li><Link to={`${profile.email}`} >Profile</Link></li>
-            <li><Link to="" onClick={handleLogout}>Log Out</Link></li>
-          </ul>
-        </nav>
+        <div className={styles.navContainer}>
+          <div className={styles.home}>
+            <h2>Social NFT</h2>
+          </div>
+          <div>
+            {/* <SearchResults /> */}
+          </div>
+          <div className={styles.rightNav}>
+            <Link to="/"><i class="fa-solid fa-house"></i></Link>
+            <Link to="/messages"><i class="fa-solid fa-inbox"></i></Link>
+            <Link to="/addpost"><i class="fa-regular fa-square-plus"></i></Link>
+            <Link to="/explore"><i class="fa-brands fa-font-awesome"></i></Link>
+            <Link to="/notifications"><i class="fa-regular fa-heart"></i></Link>
+            <Link to={`${profile.email}`}><i class="fa-regular fa-user-astronaut"></i></Link>
+            <Link to="" onClick={handleLogout}>Log Out</Link>
+          </div>
+        </div>
       :
         <nav>
         </nav>
