@@ -43,9 +43,22 @@ function unfollow(profiles) {
   .then(res => res.json())
 }
 
+function getSelectProfiles (profileList) {
+  return fetch(`${BASE_URL}/select`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+    body: JSON.stringify({profileList})
+  })
+  .then(res => res.json())
+}
+
 export { 
   getAllProfiles,
   getProfile,
   follow,
   unfollow,
+  getSelectProfiles
 }

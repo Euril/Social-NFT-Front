@@ -11,6 +11,34 @@ function getChatHistories() {
     .then(res => res.json())
   }
 
+
+function createChatHistory(othersProfileIDObject) {
+  return fetch(`${BASE_URL}/chat-history/new`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(othersProfileIDObject)
+  })
+  .then(res => res.json())
+}
+
+function addMessage(messageDataObject) {
+  return fetch(`${BASE_URL}/chat-history/new-message`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(messageDataObject)
+  })
+  .then(res => res.json())
+}
+
+
 export {
-    getChatHistories
+    getChatHistories,
+    createChatHistory,
+    addMessage
 }
