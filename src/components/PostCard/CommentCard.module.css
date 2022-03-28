@@ -2,17 +2,30 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    text-align: left;
     padding-right: 20px;
-    
-}
-
-.comment {
-    padding-left: 10px;    
-    flex-wrap: wrap;
+    max-width: 650px;
 }
 
 .author {
+    justify-content: center;
+    align-items: left;
+    display: flex;
+}
 
+.comment {
+    flex-direction: column;
+    max-width: 50%;
+    overflow-wrap: break-word;
+}
+
+.text {
+    font-weight: normal;
+}
+
+.delete {
+    cursor: pointer;
 }
 
 .commentLike {
