@@ -14,6 +14,7 @@ import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as profileService from './services/profileService'
 import AddPost from './pages/AddPost/AddPost'
+import EditPost from './pages/EditPost/EditPost'
 
 
 // Have fun, y'all. ;)
@@ -22,6 +23,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
 
+
   // States for search refactor as you please
   //⬇️  Holds the array of all profiles to be then filtered
   const [tempProfiles, setTempProfiles] = useState({})
@@ -29,6 +31,10 @@ const App = () => {
   const [search, setSearch] = useState({query: ''})
   //⬇️  Holds the filted array of profiles to be sent to searchResults
   const [searchResults, setSearchResults] = useState({tempProfiles: []})
+  const [search, getSearch] = useState({query: ''})
+  const [searchResults, setSearchResults] = useState({profile: []})
+  const [postUpdate, setPostUpdate] = useState(0)
+
 
   const navigate = useNavigate()
 
@@ -42,6 +48,10 @@ const App = () => {
       navigate('login')
     }
   }, [user])
+
+  useEffect(()=>{
+      navigate('/')
+  }, [profile])
 
 
 
@@ -59,8 +69,27 @@ const App = () => {
     const newPost = await postService.create(newPostData)
     console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
-    setProfile(profile)
-    console.log("🚀 ~ profile", profile);
+//await setProfile(profile)
+    setProfile({...profile})
+    //navigate('/')
+  }
+
+  const handleEditPost = async (editedPostData) => {
+    const editedPost = await postService.update(editedPostData)
+    let tempProfile = {...profile}
+    tempProfile.posts = tempProfile.posts.map(post => {
+      try {
+        if (post._id == editedPost._id) return editedPost
+        else return post
+      } catch (error) {
+        console.log(error)
+        return post
+      }
+      
+    })
+    //await setProfile(tempProfile)
+    //navigate('/')
+    setProfile(tempProfile)
   }
 
   //Second useEffect when page loads fills temp profiles with all profiles
@@ -116,6 +145,11 @@ const App = () => {
         <Route
           path="/addpost"
           element={<AddPost handleAddPost={handleAddPost} profile={profile}/>}
+        />
+
+        <Route
+          path="/editpost"
+          element={<EditPost handleEditPost={handleEditPost} profile={profile}/>}
         />
 
         <Route

@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
-import styles from './AddPost.module.css'
+import { Navigate, useNavigate, useLocation } from "react-router-dom"
+import styles from './EditPost.module.css'
 
-const AddPost = ({profile, handleAddPost}) => {
+const EditPost = ({profile, handleEditPost}) => {
   const formElement = useRef()
   const navigate = useNavigate()
-  const [submitted, setSubmitted] = useState(false)
+  const location = useLocation()
+  const post = location.state.post
+  let submitted = false
+ // console.log('handleEditPost', handleEditPost)
+  
 
   let char=0
   const [formData, setFormData] = useState({
@@ -13,9 +17,8 @@ const AddPost = ({profile, handleAddPost}) => {
     caption: ""
   })
 
-
   const handleChange = evt => {
-    console.log('HANDLE CHANGE EVENT hitting', evt.target.value)
+    //console.log('HANDLE CHANGE EVENT hitting', evt.target.value)
     setFormData({...formData, [evt.target.name]: evt.target.value})
     char= (evt.target.value)
   }
@@ -30,12 +33,8 @@ const AddPost = ({profile, handleAddPost}) => {
 		const postFormData = new FormData()
 		postFormData.append('images', formData.images)
     postFormData.append('caption', formData.caption)
-    if (!submitted) {
-      setSubmitted(true)
-      
-      handleAddPost(postFormData)
-    }
-    // ☝️ doesnt show new post in landing page if navigated to, doesn't have the updated state of posts
+    postFormData.append('postID', post._id)
+    handleEditPost(postFormData)
   }
 
   return (
@@ -43,7 +42,7 @@ const AddPost = ({profile, handleAddPost}) => {
     
     <div className={styles.container}>
       <div className={styles.header}> 
-        <h1>Create New Post</h1>
+        <h1>Edit Post</h1>
         <hr></hr>
       </div>
       <div>
@@ -54,9 +53,9 @@ const AddPost = ({profile, handleAddPost}) => {
           </div> */}
           <div>
             <textarea
-            placeholder="Write a caption..." name="caption" className={styles.caption} maxLength='1000' onChange={handleChange} ></textarea> 
+            placeholder="Write a caption..." name="caption" className={styles.caption} maxLength='1000' onChange={handleChange}>{post.caption}</textarea> 
           </div>
-          <button type="submit" disabled={submitted}>SHARE</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>
@@ -64,4 +63,4 @@ const AddPost = ({profile, handleAddPost}) => {
   )
 }
 
-export default AddPost
+export default EditPost
