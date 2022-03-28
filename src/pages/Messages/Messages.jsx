@@ -59,10 +59,27 @@ const Messages = ({ profile }) => {
     return populatedProfiles
   }
 
+  const upDateChatHistories = (upDatedActiveChatHistory) => {
+    let tempAllChatHistories = allChatHistories.map(chatHistory => {
+      if (chatHistory._id == upDatedActiveChatHistory._id) {
+        return upDatedActiveChatHistory
+      } else {
+        return chatHistory
+      }
+    })
+
+    setAllChatHistories(tempAllChatHistories)
+  }
+
   const handleAddMessage = (messageDataObject) => {
     //console.log('message to add: ', message)
     addMessage(messageDataObject)
-    .then(upDatedActiveChatHistory => setActiveChatHistory(upDatedActiveChatHistory))
+    .then(upDatedActiveChatHistory => {
+      if (upDatedActiveChatHistory) {
+        setActiveChatHistory(upDatedActiveChatHistory)
+        upDateChatHistories(upDatedActiveChatHistory)
+      }
+    })
   }
 
   useEffect(()=>{
