@@ -53,9 +53,24 @@ function toggleLike(likeInfo) {
 }
 
 
+function deletePost(postIDObject) {
+  //console.log(profileID)
+  return fetch(`${BASE_URL}/delete`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+    body: JSON.stringify(postIDObject)
+    //body: comment
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getNewsFeed,
 getExploreFeed,
-  toggleLike
+  toggleLike,
+  deletePost
 }

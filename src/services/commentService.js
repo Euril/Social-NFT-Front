@@ -31,7 +31,22 @@ function createComment(comment) {
     .then(res => res.json())
   }
 
+  function deleteComment(commentIDObject) {
+    //console.log(profileID)
+    return fetch(`${BASE_URL}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+      body: JSON.stringify(commentIDObject)
+      //body: comment
+    })
+    .then(res => res.json())
+  }
+
 export {
     createComment,
-    toggleLike
+    toggleLike,
+    deleteComment
 }
