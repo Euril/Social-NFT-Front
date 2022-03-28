@@ -25,6 +25,7 @@ const App = () => {
 
   const [search, getSearch] = useState({query: ''})
   const [searchResults, setSearchResults] = useState({profile: []})
+  const [postUpdate, setPostUpdate] = useState(0)
 
   const navigate = useNavigate()
 
@@ -38,6 +39,10 @@ const App = () => {
       navigate('login')
     }
   }, [user])
+
+  useEffect(()=>{
+      navigate('/')
+  }, [profile])
 
 
   const handleLogout = () => {
@@ -54,14 +59,13 @@ const App = () => {
     const newPost = await postService.create(newPostData)
     console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
-    setProfile(profile)
-    console.log("🚀 ~ profile", profile);
+//await setProfile(profile)
+    setProfile({...profile})
+    //navigate('/')
   }
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-   // console.log("🚀 ~ editedPost", editedPost);
-    //profile.posts.push(editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map(post => {
       try {
@@ -73,9 +77,9 @@ const App = () => {
       }
       
     })
-
+    //await setProfile(tempProfile)
+    //navigate('/')
     setProfile(tempProfile)
-    //console.log("🚀 ~ profile", profile);
   }
 
   const handleSubmitSearch = evt => {
