@@ -19,12 +19,32 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
       <hr />
       <div className={styles.card}>
         <div >
-          <p className={styles.username}> <Link to={`/${post.author.email}`}>{post.author.email}</Link> <span onClick={handlePostDelete}>delete</span> </p>
+          <p 
+            className={styles.username}> 
+              <Link 
+                to={`/${post.author.email}`}>
+                  {post.author.email}
+              </Link> 
+              <span 
+                onClick={handlePostDelete}
+                className={styles.delete}
+              >
+                <i class="fa-solid fa-trash-can"></i>
+              </span> 
+            </p>
         <img
             src={post.images}
             alt='post'
           />
-          <p className={styles.author}><span> <Link to={`/${post.author.email}`}>{post.author.email}</Link></span>{post?.caption}</p>
+          <p 
+            className={styles.author}>
+              <span> 
+                <Link to={`/${post.author.email}`}>
+                  {post.author.email}
+                </Link>
+              </span>
+              {post?.caption}
+          </p>
           
           <PostLikes post={post} profile={profile}/> 
 
