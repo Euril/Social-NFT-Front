@@ -17,6 +17,13 @@ const Messages = ({ profile }) => {
   const initActiveChatHistory = async (othersProfileID, allChatHistories) => {
    //console.log('init - allchathistories: ', allChatHistories)
     if (othersProfileID == profile._id) return 
+
+    //if no params, so if click on message page directly
+    if (!othersProfileID) {
+      setAllChatHistories(allChatHistories)
+      setActiveChatHistory(allChatHistories[0])
+      return activeChatHistory
+    }
     let activeChatHistory = allChatHistories.filter(chatHistory => {
       try {
         if (chatHistory?.chatHistoryMembers?.includes(othersProfileID)) {
