@@ -5,8 +5,12 @@
   align-items: center;
   border: none;
   border-radius: 4px;
-  padding: 50px 50px 50px 50px;
+  margin: 50px 50px 50px 50px;
+  padding: 50px;
+  background-color: inherit;
   background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px grey
 }
 
 .caption{
