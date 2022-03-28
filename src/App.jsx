@@ -31,8 +31,7 @@ const App = () => {
   const [search, setSearch] = useState({query: ''})
   //⬇️  Holds the filted array of profiles to be sent to searchResults
   const [searchResults, setSearchResults] = useState({tempProfiles: []})
-  const [search, getSearch] = useState({query: ''})
-  const [searchResults, setSearchResults] = useState({profile: []})
+
   const [postUpdate, setPostUpdate] = useState(0)
 
 
