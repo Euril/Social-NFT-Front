@@ -1,4 +1,7 @@
+import styles from './ChatHistoryCard'
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
+
 
 const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatHistory}) => {
   const [otherProfilesEmail, setOtherProfilesEmail] = useState()
@@ -31,16 +34,22 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
   },[chatHistory, upToDateProfiles])
 
   return (
-    <div>
-      {
+    <div className={styles.chatHistoryCard}>
+      <div>
+         {
         otherProfilesEmail ?
-
-        <div onClick={handleClick}>Messages with: {otherProfilesEmail}</div>
+        
+          <div className={styles.chatHistoryNames} onClick={handleClick}>
+              <Link to=''>{otherProfilesEmail}</Link>
+              
+          </div>
         
         :
 
-        <></>
-      }
+          <></>
+        }
+      </div>
+     
     </div>
   )
 }
