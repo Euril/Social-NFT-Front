@@ -22,6 +22,9 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
 
+  const [search, getSearch] = useState({query: ''})
+  const [searchResults, setSearchResults] = useState({profile: []})
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -54,9 +57,29 @@ const App = () => {
     console.log("🚀 ~ profile", profile);
   }
 
+  const handleSubmitSearch = evt => {
+    evt.preventDefault()
+    let profileList = profileService.getAllProfiles()
+    console.log('SERVICES PROFILE!!!!!!', profileList)
+    console.log('SEARCH QUERY !', search.query)
+    
+    setSearchResults({
+      profile: profileList.filter(profile=> profile.email.includes(search.query))
+    })
+    console.log('HANDLE SUBMIT SEARCH TRIGGERED!!!!!')
+    console.log('setSearchResults=====',setSearchResults)
+  }
+
+  const handleSearchProfile = evt => {
+    console.log('HANDLE Search PROFILE TRIGGERED!!!!!')
+    console.log('SEARCH PROFILE VALUE', evt.target.value)
+    //getSearch({...search, [evt.target.email]: evt.target.value})
+   //console.log('GET SEARCH', getSearch)
+  }
+
   return (
     <>
-      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} search={search} handleSubmitSearch={handleSubmitSearch} handleSearchProfile={handleSearchProfile}/>
       <Routes>
         <Route path="/" element={<Landing user={user} profile={profile} />} /> 
         <Route

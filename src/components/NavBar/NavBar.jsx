@@ -2,7 +2,7 @@ import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import styles from './NavBar.module.css'
 
-const NavBar = ({ user, handleLogout, profile }) => {
+const NavBar = ({ user, handleLogout, profile, handleSubmitSearch, handleSearchProfile, search}) => {
 
   return (
     <>
@@ -12,7 +12,10 @@ const NavBar = ({ user, handleLogout, profile }) => {
             <Link to="/"><h2>Social NFT</h2></Link>
           </div>
           <div>
-            {/* <SearchResults /> */}
+            <form onSubmit={handleSubmitSearch}>
+            
+              <input onChange={handleSearchProfile} value={search.query} name='query' type='search' placeholder='🔍 Search' aria-label="🔍 Search"/>
+            </form>
           </div>
           <div className={styles.rightNav}>
             <Link to="/"><i class="fa-solid fa-house"></i></Link>
