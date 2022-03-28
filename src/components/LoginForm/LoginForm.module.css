@@ -3,14 +3,44 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  border: 2px solid gainsboro;
+  border-radius: 4px;
+  padding: 50px 50px 50px 50px;
+  background-color: white;
 }
 
 .label,
 .button {
   margin-right: 0.5rem;
+  margin-bottom: 20px;
+}
+
+.button {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  margin-top: 14px;
+}
+
+input {
+  border-radius: 4px;
+  font-size: 19px;
+  border-color: gainsboro;
+  background-color: snow;
+  padding: 3px;
 }
 
 .inputContainer {
   margin-bottom: 1rem;
+}
+
+
+h1 {
+  font-size: 35px;
+  text-align: center;
 }

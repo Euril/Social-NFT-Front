@@ -43,8 +43,9 @@ const SignupForm = props => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
+      <h1>Sign Up</h1>
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}></label>
         <input
           type="text"
           autoComplete="off"
@@ -52,10 +53,11 @@ const SignupForm = props => {
           value={name}
           name="name"
           onChange={handleChange}
+          placeholder=" Name"
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+        <label htmlFor="email" className={styles.label}></label>
         <input
           type="text"
           autoComplete="off"
@@ -63,10 +65,11 @@ const SignupForm = props => {
           value={email}
           name="email"
           onChange={handleChange}
+          placeholder=" Email"
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.label}></label>
         <input
           type="password"
           autoComplete="off"
@@ -74,11 +77,11 @@ const SignupForm = props => {
           value={password}
           name="password"
           onChange={handleChange}
+          placeholder=" Password"
         />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
         </label>
         <input
           type="password"
@@ -87,16 +90,15 @@ const SignupForm = props => {
           value={passwordConf}
           name="passwordConf"
           onChange={handleChange}
+          placeholder=" Confirm Password"
         />
       </div>
       <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
         </button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
       </div>
+        <Link to="/login">Log In</Link>
     </form>
   )
 }
