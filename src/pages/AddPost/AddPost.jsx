@@ -12,6 +12,7 @@ const AddPost = ({profile, handleAddPost}) => {
     caption: ""
   })
 
+
   const handleChange = evt => {
     console.log('HANDLE CHANGE EVENT hitting', evt.target.value)
     setFormData({...formData, [evt.target.name]: evt.target.value})
