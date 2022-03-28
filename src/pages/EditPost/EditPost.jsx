@@ -7,6 +7,7 @@ const EditPost = ({profile, handleEditPost}) => {
   const navigate = useNavigate()
   const location = useLocation()
   const post = location.state.post
+  let submitted = false
  // console.log('handleEditPost', handleEditPost)
   
 
@@ -34,9 +35,6 @@ const EditPost = ({profile, handleEditPost}) => {
     postFormData.append('caption', formData.caption)
     postFormData.append('postID', post._id)
     handleEditPost(postFormData)
-    .then(navigate('/'))
-    // navigate('/')
-    // ☝️ doesnt show new post in landing page if navigated to, doesn't have the updated state of posts
   }
 
   return (

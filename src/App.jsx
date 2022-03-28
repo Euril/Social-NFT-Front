@@ -23,8 +23,18 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
 
+
+  // States for search refactor as you please
+  //⬇️  Holds the array of all profiles to be then filtered
+  const [tempProfiles, setTempProfiles] = useState({})
+  //⬇️  Holds the search results from the navbar
+  const [search, setSearch] = useState({query: ''})
+  //⬇️  Holds the filted array of profiles to be sent to searchResults
+  const [searchResults, setSearchResults] = useState({tempProfiles: []})
   const [search, getSearch] = useState({query: ''})
   const [searchResults, setSearchResults] = useState({profile: []})
+  const [postUpdate, setPostUpdate] = useState(0)
+
 
   const navigate = useNavigate()
 
@@ -38,6 +48,11 @@ const App = () => {
       navigate('login')
     }
   }, [user])
+
+  useEffect(()=>{
+      navigate('/')
+  }, [profile])
+
 
 
   const handleLogout = () => {
@@ -54,14 +69,13 @@ const App = () => {
     const newPost = await postService.create(newPostData)
     console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
-    setProfile(profile)
-    console.log("🚀 ~ profile", profile);
+//await setProfile(profile)
+    setProfile({...profile})
+    //navigate('/')
   }
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-   // console.log("🚀 ~ editedPost", editedPost);
-    //profile.posts.push(editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map(post => {
       try {
@@ -73,29 +87,33 @@ const App = () => {
       }
       
     })
-
+    //await setProfile(tempProfile)
+    //navigate('/')
     setProfile(tempProfile)
-    //console.log("🚀 ~ profile", profile);
   }
 
+  //Second useEffect when page loads fills temp profiles with all profiles
+  useEffect(()=> {
+    profileService.getAllProfiles()
+    .then(profiles => setTempProfiles(profiles))
+  },[])
+
+  //does the actual filtering for search
   const handleSubmitSearch = evt => {
-    evt.preventDefault()
-    let profileList = profileService.getAllProfiles()
-    console.log('SERVICES PROFILE!!!!!!', profileList)
-    console.log('SEARCH QUERY !', search.query)
-    
+    evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away
+    // getProfileList()
+    // console.log('ARRAY OF ALL PROFILES', tempProfiles)
     setSearchResults({
-      profile: profileList.filter(profile=> profile.email.includes(search.query))
+      tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
     })
-    console.log('HANDLE SUBMIT SEARCH TRIGGERED!!!!!')
-    console.log('setSearchResults=====',setSearchResults)
+    navigate('/search')
   }
-
+  //takes the results from navbar
   const handleSearchProfile = evt => {
-    console.log('HANDLE Search PROFILE TRIGGERED!!!!!')
-    console.log('SEARCH PROFILE VALUE', evt.target.value)
-    //getSearch({...search, [evt.target.email]: evt.target.value})
-   //console.log('GET SEARCH', getSearch)
+    //console.log('SEARCH PROFILE VALUE', evt.target.value)
+    // console.log('SEARCH PROFILE VALUE', getSearch)
+    setSearch({...search, [evt.target.name]: evt.target.value})
+    // console.log('GET SEARCH', search.query)
   }
 
   return (
@@ -113,7 +131,7 @@ const App = () => {
         />
         <Route
           path="/search"
-          element={<SearchResults profile={profile} />}
+          element={<SearchResults profile={profile} filteredProfiles={searchResults.tempProfiles} />}
         />
         <Route
           path="/messages"

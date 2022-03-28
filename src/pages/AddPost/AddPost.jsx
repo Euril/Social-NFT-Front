@@ -5,6 +5,7 @@ import styles from './AddPost.module.css'
 const AddPost = ({profile, handleAddPost}) => {
   const formElement = useRef()
   const navigate = useNavigate()
+  const [submitted, setSubmitted] = useState(false)
 
   let char=0
   const [formData, setFormData] = useState({
@@ -29,8 +30,11 @@ const AddPost = ({profile, handleAddPost}) => {
 		const postFormData = new FormData()
 		postFormData.append('images', formData.images)
     postFormData.append('caption', formData.caption)
-    handleAddPost(postFormData)
-    // navigate('/')
+    if (!submitted) {
+      setSubmitted(true)
+      
+      handleAddPost(postFormData)
+    }
     // ☝️ doesnt show new post in landing page if navigated to, doesn't have the updated state of posts
   }
 
@@ -52,7 +56,7 @@ const AddPost = ({profile, handleAddPost}) => {
             <textarea
             placeholder="Write a caption..." name="caption" className={styles.caption} maxLength='1000' onChange={handleChange} ></textarea> 
           </div>
-          <button type="submit">SHARE</button>
+          <button type="submit" disabled={submitted}>SHARE</button>
         </form>
       </div>
     </div>
