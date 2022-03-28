@@ -14,6 +14,7 @@ import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as profileService from './services/profileService'
 import AddPost from './pages/AddPost/AddPost'
+import EditPost from './pages/EditPost/EditPost'
 
 
 // Have fun, y'all. ;)
@@ -55,6 +56,26 @@ const App = () => {
     profile.posts.push(newPost)
     setProfile(profile)
     console.log("🚀 ~ profile", profile);
+  }
+
+  const handleEditPost = async (editedPostData) => {
+    const editedPost = await postService.update(editedPostData)
+   // console.log("🚀 ~ editedPost", editedPost);
+    //profile.posts.push(editedPost)
+    let tempProfile = {...profile}
+    tempProfile.posts = tempProfile.posts.map(post => {
+      try {
+        if (post._id == editedPost._id) return editedPost
+        else return post
+      } catch (error) {
+        console.log(error)
+        return post
+      }
+      
+    })
+
+    setProfile(tempProfile)
+    //console.log("🚀 ~ profile", profile);
   }
 
   const handleSubmitSearch = evt => {
@@ -106,6 +127,11 @@ const App = () => {
         <Route
           path="/addpost"
           element={<AddPost handleAddPost={handleAddPost} profile={profile}/>}
+        />
+
+        <Route
+          path="/editpost"
+          element={<EditPost handleEditPost={handleEditPost} profile={profile}/>}
         />
 
         <Route

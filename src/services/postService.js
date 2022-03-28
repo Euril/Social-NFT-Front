@@ -67,10 +67,26 @@ function deletePost(postIDObject) {
   .then(res => res.json())
 }
 
+function update(post) {
+  //console.log('post: ',typeof post)
+  return fetch(`${BASE_URL}/update`, {
+    method: 'PUT',
+    headers: {
+      //'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+   // body: JSON.stringify(post)
+    body: post
+  })
+  .then(res => res.json())
+}
+
+
 export {
   create,
   getNewsFeed,
 getExploreFeed,
   toggleLike,
-  deletePost
+  deletePost,
+  update
 }
