@@ -22,8 +22,13 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
 
-  const [search, getSearch] = useState({query: ''})
-  const [searchResults, setSearchResults] = useState({profile: []})
+  // States for search refactor as you please
+  //⬇️  Holds the array of all profiles to be then filtered
+  const [tempProfiles, setTempProfiles] = useState({})
+  //⬇️  Holds the search results from the navbar
+  const [search, setSearch] = useState({query: ''})
+  //⬇️  Holds the filted array of profiles to be sent to searchResults
+  const [searchResults, setSearchResults] = useState({tempProfiles: []})
 
   const navigate = useNavigate()
 
@@ -37,6 +42,7 @@ const App = () => {
       navigate('login')
     }
   }, [user])
+
 
 
   const handleLogout = () => {
@@ -57,24 +63,28 @@ const App = () => {
     console.log("🚀 ~ profile", profile);
   }
 
-  const handleSubmitSearch = evt => {
-    evt.preventDefault()
-    let profileList = profileService.getAllProfiles()
-    console.log('SERVICES PROFILE!!!!!!', profileList)
-    console.log('SEARCH QUERY !', search.query)
-    
-    setSearchResults({
-      profile: profileList.filter(profile=> profile.email.includes(search.query))
-    })
-    console.log('HANDLE SUBMIT SEARCH TRIGGERED!!!!!')
-    console.log('setSearchResults=====',setSearchResults)
-  }
+  //Second useEffect when page loads fills temp profiles with all profiles
+  useEffect(()=> {
+    profileService.getAllProfiles()
+    .then(profiles => setTempProfiles(profiles))
+  },[])
 
+  //does the actual filtering for search
+  const handleSubmitSearch = evt => {
+    evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away
+    // getProfileList()
+    // console.log('ARRAY OF ALL PROFILES', tempProfiles)
+    setSearchResults({
+      tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
+    })
+    navigate('/search')
+  }
+  //takes the results from navbar
   const handleSearchProfile = evt => {
-    console.log('HANDLE Search PROFILE TRIGGERED!!!!!')
-    console.log('SEARCH PROFILE VALUE', evt.target.value)
-    //getSearch({...search, [evt.target.email]: evt.target.value})
-   //console.log('GET SEARCH', getSearch)
+    //console.log('SEARCH PROFILE VALUE', evt.target.value)
+    // console.log('SEARCH PROFILE VALUE', getSearch)
+    setSearch({...search, [evt.target.name]: evt.target.value})
+    // console.log('GET SEARCH', search.query)
   }
 
   return (
@@ -92,7 +102,7 @@ const App = () => {
         />
         <Route
           path="/search"
-          element={<SearchResults profile={profile} />}
+          element={<SearchResults profile={profile} filteredProfiles={searchResults.tempProfiles} />}
         />
         <Route
           path="/messages"
