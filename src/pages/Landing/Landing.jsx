@@ -25,8 +25,8 @@ const Landing = ({ user, profile }) => {
         </div>
 
         :
-
-        <h1>Loading...</h1>
+        // fix loading page with cool animation gif
+        <span className={styles.loading}>LOADING</span>
 
       }
     </main>

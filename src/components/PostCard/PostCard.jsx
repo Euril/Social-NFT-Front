@@ -16,7 +16,7 @@ const PostCard = ({post, profile}) => {
             src={post.images}
             alt='post'
           />
-          <p><span> <Link to={`/${post.author.email}`}>{post.author.email}</Link></span>{post?.caption}</p>
+          <p className={styles.author}><span> <Link to={`/${post.author.email}`}>{post.author.email}</Link></span>{post?.caption}</p>
           
           <PostLikes post={post} profile={profile}/> 
 

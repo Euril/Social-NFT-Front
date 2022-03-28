@@ -1,0 +1,35 @@
+.commentCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 20px;
+    
+}
+
+.comment {
+    padding-left: 10px;    
+    flex-wrap: wrap;
+}
+
+.author {
+
+}
+
+.commentLike {
+    background-color: inherit;
+    padding-left: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    align-self: right;
+}
+
+.commentLike > button {
+    background-color: inherit;
+    padding: 2px;
+    border: none;
+    cursor: pointer;
+}
