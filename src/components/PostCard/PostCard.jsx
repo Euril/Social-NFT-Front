@@ -4,6 +4,7 @@ import CommentsContainer from './CommentsContainer.jsx'
 import PostLikes from './PostLikes.jsx'
 import styles from './PostCard.module.css'
 import { deletePost } from '../../services/postService.js'
+import EditDeletePost from './EditDeletePost.jsx'
 
 const PostCard = ({post, profile, handleDeletedPost}) => {
 
@@ -13,6 +14,8 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
     deletePost({postID: post._id, resourceAuthorID: post.author._id})
     .then(deletedPost => handleDeletedPost(deletedPost))
   }
+
+
   
   return (
     <div className={styles.postCardContainer}>
@@ -25,12 +28,7 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
                 to={`/${post.author.email}`}>
                   {post.author.email}
               </Link> 
-              <span 
-                onClick={handlePostDelete}
-                className={styles.delete}
-              >
-                <i class="fa-solid fa-trash-can"></i>
-              </span> 
+              {post?.author?._id == profile?._id ? <EditDeletePost post={post} handlePostDelete={handlePostDelete}/> : <></>}
             </p>
         <img
             src={post.images}
