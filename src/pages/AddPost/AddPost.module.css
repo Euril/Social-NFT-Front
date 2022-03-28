@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  padding: 50px 50px 50px 50px;
+  background-color: white;
+}
+
+.caption{
+    font-size: 14px;
+    width:97%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* resize: vertical; */
+    padding-left: 10px;
+    resize:vertical;
+    padding-top: 10px;
+    background-color: white;
+}
+
+button {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  margin-top: 14px;
+  float:right;
+}
+
+.header{
+  margin: 0;
+  
+}
+.header h1{
+  margin:0;
+  padding: 0 40px;
+}
+
+.imageLabel{
+  border:1px solid white;
+  border-radius: 7px;
+  display:inline-block;
+  padding: 10px;
+  background-color: white;
+  font-size: 15px;
+  font-weight: bold;
+  color:black;
+}
+
+input[type=file]::file-selector-button {
+  border: 1px solid white;
+  border-radius: 7px;
+  background-color:dodgerblue;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  color:white;
+  cursor:pointer;
+}
