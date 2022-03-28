@@ -1,3 +1,4 @@
+import styles from './Messages.module.css'
 import ChatHistoryContainer from "./ChatHistoryContainer"
 import MessageContainer from "./MessageContainer"
 import { useEffect, useState } from 'react'
@@ -115,10 +116,25 @@ const Messages = ({ profile }) => {
   
 
   return (
-    <div>
-      <h1>All Chat Histories Length: {allChatHistories?.length}</h1>
-      <ChatHistoryContainer activeChatHistory={activeChatHistory} profile={profile} allChatHistories={allChatHistories} upToDateProfiles={upToDateProfiles} setActiveChatHistory={setActiveChatHistory}/>
-      <MessageContainer activeChatHistory={activeChatHistory} profile={profile} handleAddMessage={handleAddMessage}/>
+    <div className={styles.messages}>
+      {/* <h1>All Chat Histories Length: {allChatHistories?.length}</h1> */}
+      <div >
+        
+        <ChatHistoryContainer 
+        activeChatHistory={activeChatHistory} 
+        profile={profile} 
+        allChatHistories={allChatHistories} 
+        upToDateProfiles={upToDateProfiles} 
+        setActiveChatHistory={setActiveChatHistory}
+      />
+      </div>
+      <div>
+        <MessageContainer 
+        activeChatHistory={activeChatHistory} 
+        profile={profile} 
+        handleAddMessage={handleAddMessage}
+      />
+      </div>
     </div>
   )
 }

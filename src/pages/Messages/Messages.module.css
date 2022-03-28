@@ -1,0 +1,20 @@
+.messages {
+    /* create a grid with 2 columns and 1 row that spans the entire page */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "left right";
+    grid-gap: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.messages > div {
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 90px;
+    height: 100%;
+    width: 100%;
+}
