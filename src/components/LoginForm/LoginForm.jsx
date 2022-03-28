@@ -34,7 +34,8 @@ const LoginForm = props => {
         className={styles.container}
       >
         <div className={styles.inputContainer}>
-          <label htmlFor="email" className={styles.label}>Email</label>
+          <h1>Log In</h1>
+          <label htmlFor="email" className={styles.label}></label>
           <input
             type="text"
             autoComplete="off"
@@ -42,10 +43,11 @@ const LoginForm = props => {
             value={formData.email}
             name="email"
             onChange={handleChange}
+            placeholder=" Email"
           />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="password" className={styles.label}>Password</label>
+          <label htmlFor="password" className={styles.label}></label>
           <input
             type="password"
             autoComplete="off"
@@ -53,17 +55,15 @@ const LoginForm = props => {
             value={formData.pw}
             name="pw"
             onChange={handleChange}
+            placeholder=" Password"
           />
         </div>
         <div>
           <button className={styles.button}>Log In</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
         </div>
+        <Link to="/signup">create account</Link>
       </form>
 
-      <Link to="/signup">create account</Link>
     </>
   )
 }

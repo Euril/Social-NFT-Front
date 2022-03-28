@@ -1,0 +1,45 @@
+.likesContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: inherit;
+    padding-left: 10px;
+    
+}
+
+.likeButton {
+    font-size: 17px;
+    font-weight: bold;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    margin-top: 14px;
+  }
+
+    .likeButton:hover {
+        background-color: rgb(4, 116, 177);
+        color: white;
+        cursor: pointer;
+    }
+
+.likes {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding-left: 8px;
+    
+}
+
+.likeButton {
+    font-size: 17px;
+    font-weight: bold;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    margin-top: 14px;
+}

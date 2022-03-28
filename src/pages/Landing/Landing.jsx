@@ -15,7 +15,6 @@ const Landing = ({ user, profile }) => {
 
   return (
     <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
       {
         newsFeed  ? 
 
@@ -26,8 +25,8 @@ const Landing = ({ user, profile }) => {
         </div>
 
         :
-
-        <h1>Loading...</h1>
+        // fix loading page with cool animation gif
+        <span className={styles.loading}>LOADING</span>
 
       }
     </main>

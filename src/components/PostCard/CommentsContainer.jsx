@@ -1,3 +1,4 @@
+import styles from './CommentsContainer.module.css'
 import { useEffect, useState, useRef } from "react"
 import { createComment } from '../../services/commentService'
 import CommentCard from "./CommentCard"
@@ -22,24 +23,21 @@ const CommentsContainer = ({post, profile}) => {
        .then(newPostState => setPostState(newPostState))
     }
 
-
-    
-  
-
     return (
         <div>
-            <form ref={commentFormElement} onSubmit={handleComment}>
-                <textarea onChange={handleCommentFormChange} name="comment" id="" cols="30" rows="10"></textarea>
-                <button type="submit">Comment</button>
-            </form>
-
-            <ul>
+            <div className={styles.comment}>
+                <form ref={commentFormElement} onSubmit={handleComment}>
+                    <textarea onChange={handleCommentFormChange} name="comment" cols="40" rows="1" placeholder='   Add a comment...'></textarea>
+                    <button className={styles.commentButton}type="submit">Comment</button>
+                </form>
+            </div>
+            <div>
             {
                 postState.comments?.map(comment => (
                     <CommentCard comment={comment} postID={post._id} profileID={profile._id}/>
                 ))
             }
-            </ul>
+            </div>
         </div>
     )
 }
