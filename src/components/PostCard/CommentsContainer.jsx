@@ -23,6 +23,23 @@ const CommentsContainer = ({post, profile}) => {
        .then(newPostState => setPostState(newPostState))
     }
 
+    const handleDeletedComment = (deletedCommentID) => {
+        let tempComments = postState.comments
+        try {
+         // console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
+         // console.log('length before: ', tempNewsFeed.length)
+          tempComments= tempComments.filter(comment => comment._id != deletedCommentID)
+         // console.log('length after: ', tempNewsFeed.length)
+        }
+    
+        catch (error) {
+          console.log(error)
+        }
+        
+        let tempPostState = {...postState, comments: tempComments}
+        setPostState(tempPostState)
+      } 
+
     return (
         <div>
             <div className={styles.comment}>
@@ -34,7 +51,7 @@ const CommentsContainer = ({post, profile}) => {
             <div>
             {
                 postState.comments?.map(comment => (
-                    <CommentCard comment={comment} postID={post._id} profileID={profile._id}/>
+                    <CommentCard comment={comment} postID={post._id} profileID={profile._id} handleDeletedComment={handleDeletedComment}/>
                 ))
             }
             </div>

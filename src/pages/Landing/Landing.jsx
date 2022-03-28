@@ -7,6 +7,22 @@ import PostCard from '../../components/PostCard/PostCard.jsx'
 const Landing = ({ user, profile }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
+
+  const handleDeletedPost = (deletedPost) => {
+    let tempNewsFeed = newsFeed
+    try {
+     // console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
+     // console.log('length before: ', tempNewsFeed.length)
+      tempNewsFeed = newsFeed.filter(post => post._id != deletedPost._id)
+     // console.log('length after: ', tempNewsFeed.length)
+    }
+
+    catch (error) {
+      console.log(error)
+    }
+    
+    setNewsFeed(tempNewsFeed)
+  } 
   
   useEffect(() => {
    getNewsFeed()
@@ -20,7 +36,7 @@ const Landing = ({ user, profile }) => {
 
         <div className="post-card-container">
           {newsFeed.map(post => (
-              <PostCard post={post} profile={profile} />
+              <PostCard post={post} profile={profile} handleDeletedPost={handleDeletedPost} />
           ))}
         </div>
 

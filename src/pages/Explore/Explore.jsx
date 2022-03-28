@@ -12,6 +12,22 @@ const location = useLocation()
 const getLastWordInURL = () => location.pathname.split('/').at(-1) 
 let lastWordInURL = getLastWordInURL
 
+const handleDeletedPost = (deletedPost) => {
+  let tempExploreFeed = exploreFeed
+  try {
+    //console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
+    //console.log('length before: ', tempNewsFeed.length)
+    tempExploreFeed = exploreFeed.filter(post => post._id != deletedPost._id)
+    //console.log('length after: ', tempNewsFeed.length)
+  }
+
+  catch (error) {
+    console.log(error)
+  }
+  
+  setExploreFeed(tempExploreFeed)
+} 
+
 useEffect(() => {
   //lastWordInURL = getLastWordInURL()
   //console.log('last item in URL: ', lastWordInURL)
@@ -32,7 +48,7 @@ return (
 
       <div className="post-card-container">
         {exploreFeed.map(post => (
-            <PostCard post={post}  profile={profile}/>
+            <PostCard post={post}  profile={profile} handleDeletedPost={handleDeletedPost} />
         ))}
       </div>
 
