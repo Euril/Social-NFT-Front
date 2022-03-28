@@ -1,9 +1,10 @@
 .likesContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: inherit;
-    padding-left: 10px;
-    
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
 }
 
 .likeButton {

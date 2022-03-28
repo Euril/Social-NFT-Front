@@ -21,8 +21,20 @@ const handleDeleteComment = () => {
   return (
     <li>
       <div className={styles.commentCard}>
+          <span 
+            onClick={handleDeleteComment}
+            className={styles.delete}
+          >
+              <i class="fa-solid fa-trash-can"></i>
+          </span> 
           <div className={styles.comment}>
-            <h4><span className={styles.author}>{comment.author}: </span> {comment.text}  <span onClick={handleDeleteComment}>delete</span> </h4>
+            <span 
+              className={styles.author}>
+                {comment.author}: 
+            </span> 
+            <h4 className={styles.text}>
+                  {comment.text}  
+            </h4>
           </div>
           <div className={styles.commentLike}>
              <button  onClick={handleCommentLike}><i class="fa-regular fa-thumbs-up"></i></button>
