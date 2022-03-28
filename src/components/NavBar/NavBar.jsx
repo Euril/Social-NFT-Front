@@ -9,7 +9,7 @@ const NavBar = ({ user, handleLogout, profile }) => {
       {user ?
         <div className={styles.navContainer}>
           <div className={styles.home}>
-            <h2>Social NFT</h2>
+            <Link to="/"><h2>Social NFT</h2></Link>
           </div>
           <div>
             {/* <SearchResults /> */}
@@ -20,13 +20,14 @@ const NavBar = ({ user, handleLogout, profile }) => {
             <Link to="/addpost"><i class="fa-regular fa-square-plus"></i></Link>
             <Link to="/explore"><i class="fa-brands fa-font-awesome"></i></Link>
             <Link to="/notifications"><i class="fa-regular fa-heart"></i></Link>
-            <Link to={`${profile.email}`}><i class="fa-regular fa-user-astronaut"></i></Link>
-            <Link to="" onClick={handleLogout}>Log Out</Link>
+            <Link to={`${profile.email}`}><i class="fa-solid fa-user-plus"></i></Link>
+            <Link to="" onClick={handleLogout}><i class="fa-solid fa-arrow-right-from-bracket"></i></Link>
           </div>
         </div>
       :
-        <nav>
-        </nav>
+        <div>
+          <h1>Social NFT</h1>
+        </div>
       }
     </>
   )

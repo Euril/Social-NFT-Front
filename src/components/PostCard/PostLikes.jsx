@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useRef, useState } from "react"
 import {toggleLike} from '../../services/postService.js'
+import styles from './PostLikes.module.css'
 
 function PostLikes ({post, profile}) {
 
@@ -18,13 +19,13 @@ const handleLike = evt => {
 } 
 
 return (
-    <>
-      <p><Link to={`/${post.author.email}`} >{post.author.email}</Link> </p>
+    <div className={styles.likesContainer}>
+      
       <form onSubmit={handleLike} ref={likeFormElement}>
         <button name="likeButton" type="submit">Like</button>
       </form>
       <p>Likes: {likedBy.length}</p>
-    </>
+    </div>
 
 
 )

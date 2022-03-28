@@ -29,7 +29,7 @@ const CommentsContainer = ({post, profile}) => {
     return (
         <div>
             <form ref={commentFormElement} onSubmit={handleComment}>
-                <textarea onChange={handleCommentFormChange} name="comment" id="" cols="30" rows="10"></textarea>
+                <textarea onChange={handleCommentFormChange} name="comment" id="" cols="40" rows="4"></textarea>
                 <button type="submit">Comment</button>
             </form>
 

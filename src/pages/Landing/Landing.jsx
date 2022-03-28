@@ -15,7 +15,6 @@ const Landing = ({ user, profile }) => {
 
   return (
     <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
       {
         newsFeed  ? 
 
