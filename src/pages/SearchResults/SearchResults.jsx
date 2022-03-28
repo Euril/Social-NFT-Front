@@ -17,12 +17,12 @@ const SearchResults = ({profile, filteredProfiles}) => {
                 <ul>
                     
                 {filteredProfiles.map(profile => 
-                <li>
+                <div>
                     <Link to={`/${profile.email}`}>
                         {/* placeholder for avatars */}
                         {profile.email}
                         </Link>
-                </li>
+                </div>
                 )}
                 </ul>
             </div>
