@@ -8,6 +8,7 @@
     background-color: snow;
     margin-bottom: 1rem;
     text-decoration: none;
+
 }
 
 .card {
@@ -60,7 +61,11 @@ p {
 .author {
     border-bottom: 1px solid rgb(227, 226, 226);
 }
-
 .delete {
     cursor: pointer;
+}
+.edit {
+    cursor: pointer;
+    /* align to the right of right most item */
+    align-self: right;
 }

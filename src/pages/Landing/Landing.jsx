@@ -42,7 +42,7 @@ const Landing = ({ user, profile }) => {
 
         :
         // fix loading page with cool animation gif
-        <span className={styles.loading}>LOADING</span>
+        <span className={styles.loading}>Loading...</span>
 
       }
     </main>

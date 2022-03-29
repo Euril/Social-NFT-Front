@@ -6,15 +6,21 @@ const EditDeletePost = ({handlePostDelete, post}) => {
   
 
   return (
-    <>
-      <span><Link to="/editpost" state={{post}}>edit</Link></span>
+    <div className={styles.editDeletePost}>
+      <span
+        lassName={styles.edit}
+      >
+          <Link to="/editpost" state={{post}}>
+            <i class="fa-solid fa-wrench"></i>
+          </Link>
+      </span>
       <span 
         onClick={handlePostDelete}
         className={styles.delete}
       >
         <i class="fa-solid fa-trash-can"></i>
       </span> 
-    </>
+    </div>
   )
 }
 
