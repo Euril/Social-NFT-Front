@@ -1,7 +1,7 @@
 /* .messageContainer {
    padding-top: 40px;
 } */
-
+/* 
 .messageContainer {
     position: absolute;
     padding: 50px 50px 50px 50px;
@@ -38,4 +38,22 @@
     display: flex;
     flex-direction: column;
     padding-top: 30px;
+} */
+
+/* .messageContainer{
+    display: grid; 
+    grid-template-columns: 100%; 
+    grid-template-rows: 15% 75% 10%; 
+    gap: 0px 0px; 
+} */
+.messageHeader{
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+.messageBody{
+    grid-area: 2 / 1 / 3 / 4;
+}
+
+.messageFooter{
+    grid-area: 3 / 1 / 4 / 4;
 }

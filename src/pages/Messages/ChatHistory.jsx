@@ -1,4 +1,5 @@
-import styles from './ChatHistory.module.css'
+//import styles from './ChatHistory.module.css'
+import styles from './Messages.module.css'
 import ChatHistoryContainer from "./ChatHistoryContainer";
 
 const ChatHistory = () => {

@@ -116,10 +116,10 @@ const Messages = ({ profile }) => {
   
 
   return (
+    <div className={styles.container}>
     <div className={styles.messages}>
       {/* <h1>All Chat Histories Length: {allChatHistories?.length}</h1> */}
-      <div >
-        
+      <div className={styles.chatHistoryContainer}>
         <ChatHistoryContainer 
         activeChatHistory={activeChatHistory} 
         profile={profile} 
@@ -128,13 +128,14 @@ const Messages = ({ profile }) => {
         setActiveChatHistory={setActiveChatHistory}
       />
       </div>
-      <div>
+      <div className={styles.messagesContainer}>
         <MessageContainer 
         activeChatHistory={activeChatHistory} 
         profile={profile} 
         handleAddMessage={handleAddMessage}
       />
       </div>
+    </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
-import styles from './ChatHistoryCard'
+// import styles from './ChatHistoryCard'
+import styles from './Messages.module.css'
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 
@@ -35,6 +36,13 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
 
   return (
     <div className={styles.chatHistoryCard}>
+      <div >
+        {/* placeholder for avatar */}
+          <img 
+            src={`https://picsum.photos/id/9/50/50`} 
+            alt="Placeholder Avatar"
+          />
+      </div>
       <div>
          {
         otherProfilesEmail ?

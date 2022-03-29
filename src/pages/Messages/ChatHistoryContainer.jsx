@@ -1,16 +1,17 @@
-import styles from './ChatHistoryContainer.module.css'
+//import styles from './ChatHistoryContainer.module.css'
+import styles from './Messages.module.css'
 import ChatHistoryCard from "./ChatHistoryCard";
 
 const ChatHistoryContainer = ({activeChatHistory, profile, allChatHistories, upToDateProfiles, setActiveChatHistory}) => {
     return ( 
         <div className={styles.ChatHistoryContainer}>
-            <div>
-                <h1 className={styles.chatHistoryTitle}>Messages</h1> 
+            <div className={styles.chatHeader}>
+                <h3>{profile.name}</h3> 
             </div>
-            <div className={styles.chatCard}>
+            <div >
                 {
                     allChatHistories?.map(chatHistory => (
-                        <div>
+                        <div className={styles.chatHistories}>
                             <ChatHistoryCard 
                                 profile={profile} 
                                 chatHistory={chatHistory} 
