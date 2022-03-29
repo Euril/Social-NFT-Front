@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate, useLocation } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -51,10 +51,7 @@ const App = () => {
 
   useEffect(()=>{
   //  console.log('last post: ', profile?.posts?.at(-1))
-    if (!profile.navigateTo) {
-      navigate('/')
-    }
-    else {
+    if (profile.navigateTo) {
       let navigateToLocation = profile.navigateTo
       //console.log('before delete navigate to: ',profile.navigateTo)
       delete profile.navigateTo
@@ -79,9 +76,9 @@ const App = () => {
     const newPost = await postService.create(newPostData)
     console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
-//await setProfile(profile)
+    //await setProfile(profile)
     setReturnedPost(newPost)
-    setProfile({...profile})
+    setProfile({...profile, navigateTo:'/'})
     //navigate('/')
   }
 
@@ -97,13 +94,12 @@ const App = () => {
         console.log(error)
         return post
       }
-      
     })
     //await setProfile(tempProfile)
     //navigate('/')
     profile.posts = tempProfile.posts
     setReturnedPost(editedPost)
-    setProfile({...tempProfile})
+    setProfile({...tempProfile, navigateTo: '/'})
     //console.log('updated before: ', updated)
    // setUpdated(updated=>{return 1 + updated})
     //console.log('updated after: ', updated)
