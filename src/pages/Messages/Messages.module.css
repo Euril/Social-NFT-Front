@@ -1,5 +1,5 @@
-.messages {
-    /* create a grid with 2 columns and 1 row that spans the entire page */
+/* .messagesContainer {
+    create a grid with 2 columns and 1 row that spans the entire page
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -7,9 +7,91 @@
     grid-gap: 10px;
     height: 100%;
     width: 100%;
+} */
+.container{
+    /* display:flex; */
+    justify-content: center;
+    background-color: white;
 }
 
-.messages > div {
+h3{
+    text-align: center;
+}
+
+.messages{
+    display: grid; 
+    grid-template-columns: 45% 1% 54%; 
+    grid-template-rows: 100px 20% 55% 10%; 
+    gap: 0px 0px; 
+}
+
+.chatHistoryContainer{
+    grid-area: 1 / 1 / 5 / 2;
+    overflow-y:auto;
+    display: grid; 
+    grid-template-columns: 100%; 
+    grid-template-rows: 10% 90%; 
+    gap: 0px 0px; 
+}
+
+.chatHeader{
+    grid-area: 1 / 1 / 2 / 2;
+    border:1px;
+    border-style:solid none solid none;
+}
+
+.chatHistories{
+    /* border:1px solid;
+    border-style: none none solid none;  */
+    display: grid; 
+    /* grid-template-columns: 40% 60%;  */
+    grid-template-columns: 80%; 
+    grid-template-rows: repeat(1, 75px); 
+    gap: 0px 0px; 
+    grid-area: 2 / 1 / 3 / 2; 
+    align-items: center;
+    justify-content: center;
+}
+
+.chatHistories div:not(:first-child){
+    border-top: none;
+} 
+
+.chatHistoryCard {
+    display:block;
+}
+
+.messagesContainer{
+    
+    grid-area: 1 / 3 / 5 / 4;
+    display: grid; 
+    grid-template-columns: 100%; 
+    grid-template-rows: 10% 80% 10%; 
+    gap: 0px 0px;  
+}
+
+.messageHeader{
+    grid-area: 1 / 1 / 2 / 4;
+    border:1px;
+    border-style:solid none solid solid;
+}
+
+.messageBody{
+    grid-area: 2 / 1 / 3 / 2;
+    border-left:1px solid;
+    padding: 5px 0 5px 5px;
+    overflow-y: auto;
+}
+
+.messageFooter{
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.chatHeader, .chatHistories, .messageHeader, .messageBody{
+    border-color: gainsboro;
+}
+
+/* .messages > div {
     justify-content: space-around;
     align-items: center;
     display: flex;
@@ -17,4 +99,4 @@
     padding-top: 90px;
     height: 100%;
     width: 100%;
-}
+} */

@@ -1,4 +1,5 @@
-import styles from './MessageContainer.module.css'
+//import styles from './MessageContainer.module.css'
+import styles from './Messages.module.css'
 import { useRef, useState, useEffect } from "react";
 
 const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
@@ -26,10 +27,11 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
 
     return ( 
         <div className={styles.messageContainer}>
-            <div>
+            <div className={styles.messageHeader}>
+                <h3>Messages</h3>
             </div>
             <div>
-               <div className={styles.messageText}>           
+               <div className={styles.messageBody}>           
                 {
                     activeChatHistory?.messages.map(message=>(
                         <div>{message.text}</div>
@@ -37,8 +39,8 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                 }
                 </div>  
             </div>
-           <div className={styles.messageSubmit}>
-               <form ref={formElement} onSubmit={handleSubmit}>
+           <div className={styles.messageFooter}>
+               <form  ref={formElement} onSubmit={handleSubmit}>
                 <input 
                     name="text" 
                     type="text" 
@@ -46,6 +48,7 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                     placeholder="Message..."
                     autoComplete='off'
                     autoFocus='true'
+                    
                 />
                 {/* <button type="submit" name="submit">submit</button> */}
             </form>
