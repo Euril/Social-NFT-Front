@@ -35,7 +35,7 @@ const App = () => {
   const [searchResults, setSearchResults] = useState({tempProfiles: []})
 
   const [postUpdate, setPostUpdate] = useState(0)
-
+  const [returnedPost, setReturnedPost] = useState()
 
   const navigate = useNavigate()
 
@@ -105,6 +105,7 @@ const App = () => {
     //await setProfile(tempProfile)
     //navigate('/')
     profile.posts = tempProfile.posts
+    setReturnedPost(editedPost)
     setProfile({...tempProfile})
     //console.log('updated before: ', updated)
    // setUpdated(updated=>{return 1 + updated})
@@ -139,7 +140,7 @@ const App = () => {
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} search={search} handleSubmitSearch={handleSubmitSearch} handleSearchProfile={handleSearchProfile}/>
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} updated={updated} />} /> 
+        <Route path="/" element={<Landing user={user} profile={profile} updated={updated} returnedPost={returnedPost} setReturnedPost={setReturnedPost}/>} /> 
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}

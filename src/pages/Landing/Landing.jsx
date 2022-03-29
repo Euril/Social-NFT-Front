@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Landing = ({ user, profile, updated }) => {
+const Landing = ({ user, profile, updated, returnedPost, setReturnedPost }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
 
@@ -27,8 +27,30 @@ const Landing = ({ user, profile, updated }) => {
   useEffect(() => {
   console.log('about to fetch newsfeed')
    getNewsFeed()
-   .then(fetchedNewsFeed => {setNewsFeed([...fetchedNewsFeed]);console.log('fetched newsfeed: ',fetchedNewsFeed.at(-1))})
-  }, [updated])
+   .then(fetchedNewsFeed => {
+     if (returnedPost && !returnedPost.addedToFeed) {
+      let mappedNewsFeed = fetchedNewsFeed.map(post => {
+        try {
+          if (post._id == returnedPost._id) {
+            post.caption = returnedPost.caption
+            post.images = returnedPost.images
+            return post
+          }
+        } catch (error) {
+          
+        }
+         return post
+      })
+      setNewsFeed(mappedNewsFeed)
+      returnedPost.addedToFeed = true
+    }
+    else {
+      setNewsFeed(fetchedNewsFeed)
+    }
+   })
+  }
+  // .then(fetchedNewsFeed => {setNewsFeed([...fetchedNewsFeed]);console.log('fetched newsfeed: ',fetchedNewsFeed.at(-1)); console.log('profile last post: ', profile?.posts?.at(-1))})
+  , [updated])
 
   return (
     <main className={styles.container}>
