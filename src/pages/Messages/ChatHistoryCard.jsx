@@ -36,7 +36,7 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
 
   return (
     <div className={styles.chatHistoryCard}>
-      <div>
+      <div >
         {/* placeholder for avatar */}
           <img 
             src={`https://picsum.photos/id/9/50/50`} 

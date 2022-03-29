@@ -12,6 +12,9 @@
     /* display:flex; */
     justify-content: center;
     background-color: white;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
 }
 
 h3{
@@ -45,7 +48,7 @@ h3{
     border-style: none none solid none;  */
     display: grid; 
     /* grid-template-columns: 40% 60%;  */
-    grid-template-columns: 80%; 
+    grid-template-columns: 90%; 
     grid-template-rows: repeat(1, 75px); 
     gap: 0px 0px; 
     grid-area: 2 / 1 / 3 / 2; 
@@ -58,8 +61,18 @@ h3{
 } 
 
 .chatHistoryCard {
-    display:block;
+    text-align: center;
+    
 }
+.chatHistoryCard img{
+    float:left;
+    text-align:left;
+    border-radius: 50%;
+    
+}
+/* .chatHistoryCard:active{
+    background-color: gainsboro;
+} */
 
 .messagesContainer{
     
@@ -81,10 +94,22 @@ h3{
     border-left:1px solid;
     padding: 5px 0 5px 5px;
     overflow-y: auto;
+    height:31em;
 }
 
 .messageFooter{
     grid-area: 3 / 1 / 4 / 2;
+    position:absolute;
+    bottom:0;
+    margin-bottom: 80px;
+}
+
+.messageFooter input{
+    padding:10px;
+    border-style: 5px gainsboro;
+    background-color: white;
+    border-radius: 15px;
+    width:100%;
 }
 
 .chatHeader, .chatHistories, .messageHeader, .messageBody{

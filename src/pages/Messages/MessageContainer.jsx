@@ -40,7 +40,7 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                 </div>  
             </div>
            <div className={styles.messageFooter}>
-               <form  ref={formElement} onSubmit={handleSubmit}>
+               <form ref={formElement} onSubmit={handleSubmit}>
                 <input 
                     name="text" 
                     type="text" 
@@ -48,7 +48,6 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                     placeholder="Message..."
                     autoComplete='off'
                     autoFocus='true'
-                    
                 />
                 {/* <button type="submit" name="submit">submit</button> */}
             </form>
