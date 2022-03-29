@@ -4,4 +4,6 @@ description of project
 
 ## Technologies
 
-## Planning Materials
+## Planning 
+
+## noprofilepic.jpg is from Instagram 

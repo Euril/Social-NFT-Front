@@ -15,6 +15,7 @@ import * as postService from './services/postService'
 import * as profileService from './services/profileService'
 import AddPost from './pages/AddPost/AddPost'
 import EditPost from './pages/EditPost/EditPost'
+import EditProfile from './pages/Profile/EditProfile'
 
 
 // Have fun, y'all. ;)
@@ -22,6 +23,7 @@ import EditPost from './pages/EditPost/EditPost'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
+  const [updated, setUpdated] = useState(1)
 
 
   // States for search refactor as you please
@@ -49,7 +51,20 @@ const App = () => {
   }, [user])
 
   useEffect(()=>{
+    console.log('last post: ', profile?.posts?.at(-1))
+    if (!profile.navigateTo) {
+      console.log('about to navigate home, profile posts are: ', profile.posts)
       navigate('/')
+      setUpdated(!updated)
+      console.log('success!!!!!!!!!!!!!!!', updated)
+    }
+    else {
+      let navigateToLocation = profile.navigateTo
+      console.log('before delete navigate to: ',profile.navigateTo)
+      delete profile.navigateTo
+      console.log('navigateTo after delete: ', profile.navigateTo)
+      navigate(navigateToLocation)
+    }
   }, [profile])
 
 
@@ -75,8 +90,9 @@ const App = () => {
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
+    console.log('after editing post, edited post: ', editedPost)
     let tempProfile = {...profile}
-    tempProfile.posts = tempProfile.posts.map(post => {
+    tempProfile.posts = tempProfile.posts.map((post) => {
       try {
         if (post._id == editedPost._id) return editedPost
         else return post
@@ -88,7 +104,11 @@ const App = () => {
     })
     //await setProfile(tempProfile)
     //navigate('/')
-    setProfile(tempProfile)
+    profile.posts = tempProfile.posts
+    setProfile({...tempProfile})
+    //console.log('updated before: ', updated)
+   // setUpdated(updated=>{return 1 + updated})
+    //console.log('updated after: ', updated)
   }
 
   //Second useEffect when page loads fills temp profiles with all profiles
@@ -119,7 +139,7 @@ const App = () => {
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} search={search} handleSubmitSearch={handleSubmitSearch} handleSearchProfile={handleSearchProfile}/>
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} />} /> 
+        <Route path="/" element={<Landing user={user} profile={profile} updated={updated} />} /> 
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -159,6 +179,11 @@ const App = () => {
         <Route
           path=':email'
           element={<Profile loggedInUser={user} profile={profile}/>}
+        />
+
+        <Route
+          path=':email/edit'
+          element={<EditProfile loggedInUser={user} profile={profile} setProfile={setProfile}/>}
         />
       </Routes>
     </>
