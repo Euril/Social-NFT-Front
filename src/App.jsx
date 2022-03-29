@@ -23,7 +23,6 @@ import EditProfile from './pages/Profile/EditProfile'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
-  const [updated, setUpdated] = useState(1)
 
 
   // States for search refactor as you please
@@ -51,18 +50,15 @@ const App = () => {
   }, [user])
 
   useEffect(()=>{
-    console.log('last post: ', profile?.posts?.at(-1))
+  //  console.log('last post: ', profile?.posts?.at(-1))
     if (!profile.navigateTo) {
-      console.log('about to navigate home, profile posts are: ', profile.posts)
       navigate('/')
-      setUpdated(!updated)
-      console.log('success!!!!!!!!!!!!!!!', updated)
     }
     else {
       let navigateToLocation = profile.navigateTo
-      console.log('before delete navigate to: ',profile.navigateTo)
+      //console.log('before delete navigate to: ',profile.navigateTo)
       delete profile.navigateTo
-      console.log('navigateTo after delete: ', profile.navigateTo)
+      //console.log('navigateTo after delete: ', profile.navigateTo)
       navigate(navigateToLocation)
     }
   }, [profile])
@@ -84,13 +80,14 @@ const App = () => {
     console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
 //await setProfile(profile)
+    setReturnedPost(newPost)
     setProfile({...profile})
     //navigate('/')
   }
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-    console.log('after editing post, edited post: ', editedPost)
+   // console.log('after editing post, edited post: ', editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map((post) => {
       try {
@@ -140,7 +137,7 @@ const App = () => {
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} search={search} handleSubmitSearch={handleSubmitSearch} handleSearchProfile={handleSearchProfile}/>
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} updated={updated} returnedPost={returnedPost} setReturnedPost={setReturnedPost}/>} /> 
+        <Route path="/" element={<Landing user={user} profile={profile} returnedPost={returnedPost} />} /> 
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}

@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Landing = ({ user, profile, updated, returnedPost, setReturnedPost }) => {
+const Landing = ({ user, profile, returnedPost}) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
 
@@ -29,9 +29,11 @@ const Landing = ({ user, profile, updated, returnedPost, setReturnedPost }) => {
    getNewsFeed()
    .then(fetchedNewsFeed => {
      if (returnedPost && !returnedPost.addedToFeed) {
+      let inFetchedNewsFeed =false
       let mappedNewsFeed = fetchedNewsFeed.map(post => {
         try {
           if (post._id == returnedPost._id) {
+            inFetchedNewsFeed = true
             post.caption = returnedPost.caption
             post.images = returnedPost.images
             return post
@@ -41,6 +43,8 @@ const Landing = ({ user, profile, updated, returnedPost, setReturnedPost }) => {
         }
          return post
       })
+
+      if (!inFetchedNewsFeed) mappedNewsFeed.push(returnedPost)
       setNewsFeed(mappedNewsFeed)
       returnedPost.addedToFeed = true
     }
@@ -49,8 +53,7 @@ const Landing = ({ user, profile, updated, returnedPost, setReturnedPost }) => {
     }
    })
   }
-  // .then(fetchedNewsFeed => {setNewsFeed([...fetchedNewsFeed]);console.log('fetched newsfeed: ',fetchedNewsFeed.at(-1)); console.log('profile last post: ', profile?.posts?.at(-1))})
-  , [updated])
+  , [])
 
   return (
     <main className={styles.container}>
