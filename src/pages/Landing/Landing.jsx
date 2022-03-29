@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
 
-const Landing = ({ user, profile }) => {
+const Landing = ({ user, profile, updated }) => {
   const [newsFeed, setNewsFeed] = useState(null)
   const navigate = useNavigate()
 
@@ -25,9 +25,10 @@ const Landing = ({ user, profile }) => {
   } 
   
   useEffect(() => {
+  console.log('about to fetch newsfeed')
    getNewsFeed()
-   .then(fetchedNewsFeed => setNewsFeed(fetchedNewsFeed))
-  }, [])
+   .then(fetchedNewsFeed => {setNewsFeed([...fetchedNewsFeed]);console.log('fetched newsfeed: ',fetchedNewsFeed.at(-1))})
+  }, [updated])
 
   return (
     <main className={styles.container}>
@@ -35,7 +36,7 @@ const Landing = ({ user, profile }) => {
         newsFeed  ? 
 
         <div className="post-card-container">
-          {newsFeed.map(post => (
+          {newsFeed?.map(post => (
               <PostCard post={post} profile={profile} handleDeletedPost={handleDeletedPost} />
           ))}
         </div>

@@ -55,10 +55,27 @@ function getSelectProfiles (profileList) {
   .then(res => res.json())
 }
 
+function updateProfile(updatedProfileInformation) {
+  console.log('coming in to follow function: ', updatedProfileInformation )
+  for (let entry of updatedProfileInformation.entries()) {
+    console.log('entry: ', entry)
+  }
+  return fetch(`${BASE_URL}/update`, {
+    method: 'PATCH',
+    headers: {
+     // 'content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+    body: updatedProfileInformation
+  })
+  .then(res => res.json())
+}
+
 export { 
   getAllProfiles,
   getProfile,
   follow,
   unfollow,
-  getSelectProfiles
+  getSelectProfiles,
+  updateProfile
 }

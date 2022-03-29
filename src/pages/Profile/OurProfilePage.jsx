@@ -1,4 +1,5 @@
 import styles from './Profile.module.css'
+import { Link } from 'react-router-dom';
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
   console.log("🚀 ~ profile", profile.posts);
@@ -6,15 +7,17 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.header}>
-        <div className={styles.profileImage}>
-          <img 
-              src={`https://picsum.photos/id/42/150/150`} 
-              alt="Placeholder Avatar"
-            />
-        </div>
+        <Link to={`/${profToRender?.email}/edit`}>
+          <div className={styles.profileImage}>
+            <img 
+                src={`${profToRender.profilePicture}`} 
+                alt="profilePicture"
+              />
+          </div>
+        </Link>
         <div className={styles.profileTopBar}>
           <h1 className={styles.profileName}>{profToRender.name}</h1> 
-          <button onClick={''}>Edit Profile</button> 
+          <Link to={`/${profToRender?.email}/edit`}><button>Edit Profile</button></Link> 
         </div>
         <div className={styles.profileFollowersBar}>
           <ul>
@@ -30,7 +33,7 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
         </div>
           <div className={styles.profileBio}>
             <p className={styles.bolder}>{profToRender.email}</p>
-            <p>Place holder for Bio</p>
+            <p>Bio: {profToRender.bio}</p>
           </div>
       </div>
       
