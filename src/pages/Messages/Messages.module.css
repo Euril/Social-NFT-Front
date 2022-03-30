@@ -68,7 +68,10 @@ h3{
     float:left;
     text-align:left;
     border-radius: 50%;
-    
+}
+.chatHistoryCard img{
+    width:30px;
+    height:30px;
 }
 /* .chatHistoryCard:active{
     background-color: gainsboro;
