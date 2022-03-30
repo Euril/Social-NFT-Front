@@ -21,9 +21,11 @@ const handleLike = evt => {
 return (
     <div className={styles.likesContainer}>
       <p><span className={styles.likes}>Likes </span>{likedBy.length}</p>
+      
       <form onSubmit={handleLike} ref={likeFormElement}>
         <button className={styles.likeButton}name="likeButton" type="submit">Like</button>
       </form>
+      
     </div>
 
 
