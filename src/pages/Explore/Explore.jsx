@@ -3,10 +3,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate, Navigate, useLocation } from 'react-router-dom'
 import { getExploreFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
+import ModalPost from '../../components/PostCard/ModalPost.jsx'
 
 const Explore = ({ user, profile }) => {
 
 const [exploreFeed, setExploreFeed] = useState(null)
+const [show, setShow] = useState(false)
+const [modalPost, setModalPost] = useState(null)
+
 const navigate = useNavigate()
 const location = useLocation()
 const getLastWordInURL = () => location.pathname.split('/').at(-1) 
@@ -37,37 +41,75 @@ useEffect(() => {
   getExploreFeed()
   .then(fetchedExploreFeed => setExploreFeed(fetchedExploreFeed))
  }
-
 }, [location])
 
-return (
-  <main className={styles.container}>
-    <h1>Explore</h1>
-    {
-      exploreFeed  ? 
+const handleShow = () => setShow(true)
+const handleClose = () => {
+  setShow(false)
+  console.log('HANDLE CLOSE TRIGGERED')
+}
 
-      <div className="post-card-container">
-        {exploreFeed.map(post => (
+return (
+  <>
+  {
+    exploreFeed ?
+    <div className={styles.container}>
+      <h1>Explore</h1>
+        <div className={styles.containerRow}>
+          
+            {exploreFeed.map(post => (
+              <div className={styles.col} onClick={() => {
+              setModalPost(post); handleShow();}}>
+      
+                <img
+                src={post.images}
+                alt='post'
+                />
+              <ModalPost handleClose={handleClose} handleDeletedPost={handleDeletedPost} post={modalPost}  profile={profile} show={show}/>
+              </div>
+            ))}
+        </div>
+    </div>
+  :
+  <h1>Loading...</h1>
+  }
+
+      {/* <div className="post-card-container">
+        {exploreFeed?.map(post => (
             <PostCard post={post}  profile={profile} handleDeletedPost={handleDeletedPost} />
         ))}
-      </div>
+      </div> */}
 
-      :
+  </>
+  // <main className={styles.container}>
+  //   <h1>Explore</h1>
+  //   {
+  //     exploreFeed  ? 
 
-      <h1>Loading...</h1>
+  //     <div className="post-card-container">
+  //       {exploreFeed.map(post => (
+  //           <PostCard post={post}  profile={profile} handleDeletedPost={handleDeletedPost} />
+  //       ))}
+  //     </div>
 
-    }
+  //     :
+
+  //     <h1>Loading...</h1>
+
+  //   }
     
-    <ul>
-      {/* {newsFeed?.map(post => (
-        <img
-          src={post.images}
-          alt='post'
-        />
-      ))} */}
-    </ul>
-  </main>
-)
+  //   <ul>
+  //     //👇 was commented out already
+  //     {/* {newsFeed?.map(post => (
+  //       <img
+  //         src={post.images}
+  //         alt='post'
+  //       />
+  //     ))} */}
+  //   </ul>
+  // </main>
+  
+  )
 
 }
 
