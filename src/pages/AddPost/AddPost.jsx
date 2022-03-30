@@ -60,10 +60,7 @@ const AddPost = ({profile, handleAddPost}) => {
     postFormData.append('images', formData.images)
     console.log("🚀 ~ formData.images", formData.images);
     postFormData.append('caption', formData.caption)
-    // let image = formData.images[0]
-    
-    // await upload(image)
-    
+        
     if (!submitted) {
       setSubmitted(true)
       
@@ -74,17 +71,13 @@ const AddPost = ({profile, handleAddPost}) => {
   }
 
   const gogo = async () => {
-    console.log('running gogo function: ')
     const image = await uploadImage()
     let returnedAfterUpload = await uploadMetadata(image)
     console.log(returnedAfterUpload)
   }
   
   const uploadImage = async () => {
-    //const data = document.getElementById('imageFile').value
     const data = formData.images
-    console.log('hello world')
-    console.log("🚀 ~ data", data);
     const file = new Moralis.File(data.name, data)
     await file.saveIPFS()
 
@@ -105,6 +98,7 @@ const AddPost = ({profile, handleAddPost}) => {
     console.log('uploaded object: ',file._url)
   }
 
+  
 
 
   return (
@@ -125,8 +119,14 @@ const AddPost = ({profile, handleAddPost}) => {
             className={styles.imageLabel} 
             required
           />
-          <button onClick={login}>Moralis Metamask Login</button>
-          <button onClick={logOut}>Moralis Metamask Logout</button>
+          <div className={styles.metamask}>
+            
+            <h4>
+              Metamask Connection
+            </h4>
+            <button onClick={login}>Metamask Login</button>
+            <button onClick={logOut}>Metamask Logout</button>
+          </div>
           
           <div>
             <textarea
@@ -138,7 +138,7 @@ const AddPost = ({profile, handleAddPost}) => {
               onChange={handleChange} 
             ></textarea> 
           </div>
-          <button type="submit"  >SHARE</button>
+          <button type="submit" >SHARE</button>
         </form>
       </div>
     </div>

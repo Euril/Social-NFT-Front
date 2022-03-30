@@ -37,6 +37,7 @@ button {
   margin-bottom: 20px;
   margin-top: 14px;
   float:right;
+  cursor: pointer;
 }
 
 .header{
@@ -68,4 +69,16 @@ input[type=file]::file-selector-button {
   padding: 10px;
   color:white;
   cursor:pointer;
+}
+
+.metamask > button {
+  margin: 20px;
+  cursor: pointer;
+  background-color: rgb(255, 146, 30);
+}
+
+.metamask > h4 {
+  text-align: center;
+  text-decoration-line: underline;
+  margin-top: 39px;
 }
