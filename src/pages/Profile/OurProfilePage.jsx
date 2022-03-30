@@ -1,9 +1,20 @@
 import styles from './Profile.module.css'
 import { Link } from 'react-router-dom';
+import MintNFT from './MintNFT';
+import SocialNft from '../../artifacts/contracts/MyNFT.sol/SocialNFT.json'
+import { ethers } from 'ethers'
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
-  console.log("🚀 ~ profile", profile.posts);
-  console.log(profToRender)
+
+  const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+  const signer = provider.getSigner()
+
+  const contract = new ethers.Contract(contractAddress, SocialNft.abi, signer)
+
+
   return (
     <div className={styles.profileContainer}>
       <div className={styles.header}>
@@ -44,6 +55,12 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
             {/*⚠️ Placeholder for collections */}
             <h4> Collections</h4>
           </div>
+          <MintNFT 
+            contract={contract} 
+            contractAddress={contractAddress} 
+            provider={provider} 
+            signer={signer} 
+          />
           <div className={styles.posts}>
             {profToRender.posts?.map(post => (
               <img src={`${post?.images}`} alt="profile post" />
