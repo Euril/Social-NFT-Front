@@ -16,7 +16,7 @@ import * as profileService from './services/profileService'
 import AddPost from './pages/AddPost/AddPost'
 import EditPost from './pages/EditPost/EditPost'
 import EditProfile from './pages/Profile/EditProfile'
-
+import styles from './components/NavBar/NavBar.module.css'
 
 // Have fun, y'all. ;)
 
@@ -27,7 +27,7 @@ const App = () => {
 
   // States for search refactor as you please
   //⬇️  Holds the array of all profiles to be then filtered
-  const [tempProfiles, setTempProfiles] = useState({})
+  const [tempProfiles, setTempProfiles] = useState([])
   //⬇️  Holds the search results from the navbar
   const [search, setSearch] = useState({query: ''})
   //⬇️  Holds the filted array of profiles to be sent to searchResults
@@ -108,16 +108,19 @@ const App = () => {
   //Second useEffect when page loads fills temp profiles with all profiles
   useEffect(()=> {
     profileService.getAllProfiles()
-    .then(profiles => setTempProfiles(profiles))
+    .then(profiles => { 
+      console.log('This is PRofile: !', profiles)
+      setTempProfiles(profiles)
+    })
   },[])
 
   //does the actual filtering for search
   const handleSubmitSearch = evt => {
     evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away
     // getProfileList()
-    // console.log('ARRAY OF ALL PROFILES', tempProfiles)
+    console.log('ARRAY OF ALL PROFILES', tempProfiles)
     setSearchResults({
-      tempProfiles: tempProfiles?.filter(profile => profile.email.includes(search.query))
+      tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
     })
     navigate('/search')
   }
@@ -132,7 +135,7 @@ const App = () => {
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} search={search} handleSubmitSearch={handleSubmitSearch} handleSearchProfile={handleSearchProfile}/>
-      <Routes>
+      <Routes >
         <Route path="/" element={<Landing user={user} profile={profile} returnedPost={returnedPost} />} /> 
         <Route
           path="/signup"

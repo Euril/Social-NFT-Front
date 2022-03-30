@@ -12,9 +12,10 @@ const NavBar = ({ user, handleLogout, profile, handleSubmitSearch, handleSearchP
             <Link to="/"><h2>Social NFT</h2></Link>
           </div>
           <div>
+          
             <form onSubmit={handleSubmitSearch}>
               {/* value={search.query} */}
-              <input onChange={handleSearchProfile} name='query' type='search' placeholder='Search' aria-label="Search"/>
+              <input onChange={handleSearchProfile} name='query' type='search' placeholder='🔍 Search' aria-label="Search"/>
             </form>
           </div>
           <div className={styles.rightNav}>
