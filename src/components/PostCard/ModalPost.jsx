@@ -6,8 +6,7 @@ import styles from './PostCard.module.css'
 import { deletePost } from '../../services/postService.js'
 import EditDeletePost from './EditDeletePost.jsx'
 
-const PostCard = ({post, profile, handleDeletedPost}) => {
-
+const ModalPost = ({post, profile, show, handleClose, handleDeletedPost}) => {
 
   const handlePostDelete = () => {
     //console.log('clicked', post._id)
@@ -15,13 +14,18 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
     .then(deletedPost => handleDeletedPost(deletedPost))
   }
 
+  if(!show){
+    return null
+  }
+
   return (
-    <div className={styles.postCardContainer}>
-      <hr />
-      <div className={styles.card}>
+    <div className={styles.modal} onClick={evt => evt.stopPropagation()}>
+      <div className={styles.modalBody} >
+      <div className={styles.card} >
         <div >
           <p 
             className={styles.username}> 
+            <button onClick={handleClose}>CLOSE</button>
               <Link 
                 to={`/${post.author.email}`}>
                   {post.author.email}
@@ -47,9 +51,42 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
           <CommentsContainer post={post} profile={profile}/>
         </div>
       </div>
-        
+      </div>
     </div>
+    // <div className={styles.postCardContainer}>
+    //   <hr />
+    //   <div className={styles.card}>
+    //     <div >
+    //       <p 
+    //         className={styles.username}> 
+    //           <Link 
+    //             to={`/${post.author.email}`}>
+    //               {post.author.email}
+    //           </Link> 
+    //           {post?.author?._id == profile?._id ? <EditDeletePost post={post} handlePostDelete={handlePostDelete}/> : <></>}
+    //         </p>
+    //     <img
+    //         src={post.images}
+    //         alt='post'
+    //       />
+    //       <p 
+    //         className={styles.author}>
+    //           <span> 
+    //             <Link to={`/${post.author.email}`}>
+    //               {post.author.email}
+    //             </Link>
+    //           </span>
+    //           {post?.caption}
+    //       </p>
+          
+    //       <PostLikes post={post} profile={profile}/> 
+
+    //       <CommentsContainer post={post} profile={profile}/>
+    //     </div>
+    //   </div>
+        
+    // </div>
   )
 }
 
-export default PostCard
+export default ModalPost
