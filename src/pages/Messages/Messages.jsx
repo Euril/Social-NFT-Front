@@ -83,6 +83,7 @@ const Messages = ({ profile }) => {
     //console.log('message to add: ', message)
     addMessage(messageDataObject)
     .then(upDatedActiveChatHistory => {
+      console.log('Updated Active Chat History', upDatedActiveChatHistory)
       if (upDatedActiveChatHistory) {
         setActiveChatHistory(upDatedActiveChatHistory)
         upDateChatHistories(upDatedActiveChatHistory)
