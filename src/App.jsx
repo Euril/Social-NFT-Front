@@ -117,7 +117,7 @@ const App = () => {
     // getProfileList()
     // console.log('ARRAY OF ALL PROFILES', tempProfiles)
     setSearchResults({
-      tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
+      tempProfiles: tempProfiles?.filter(profile => profile.email.includes(search.query))
     })
     navigate('/search')
   }

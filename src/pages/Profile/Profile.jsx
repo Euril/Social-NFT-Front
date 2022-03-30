@@ -1,3 +1,4 @@
+import loading from '../loading.module.css'
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getProfile } from "../../services/profileService";
@@ -72,7 +73,10 @@ const Profile = ({loggedInUser, profile}) => {
 
         :
 
-        <div>Loading</div>
+        // <div>Loading</div>
+        <div className={loading.loading}>
+      <i class="fas fa-spinner fa-pulse fa-2x"></i>
+    </div>
       }
     </>
 )
