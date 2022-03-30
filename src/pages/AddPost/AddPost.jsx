@@ -103,7 +103,9 @@ const AddPost = ({profile, handleAddPost}) => {
 
   return (
     <>
-    
+      {
+        handleAddPost ? 
+      
     <div className={styles.container}>
       <div className={styles.header}> 
         <h1>Create New Post</h1>
@@ -142,6 +144,10 @@ const AddPost = ({profile, handleAddPost}) => {
         </form>
       </div>
     </div>
+    :
+    // fix loading page with cool animation gif
+    <span className={styles.loading}>Loading...</span>
+    }
     </>
   )
 }

@@ -1,4 +1,5 @@
 import styles from './Landing.module.css'
+import loading from '../loading.module.css'
 import { useEffect, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
@@ -68,8 +69,11 @@ const Landing = ({ user, profile, returnedPost}) => {
 
         :
         // fix loading page with cool animation gif
-        <span className={styles.loading}>Loading...</span>
-
+        // <span className={styles.loading}>Loading...</span>
+        <div className={loading.loading}>
+          <i class="fas fa-spinner fa-pulse fa-2x"></i>
+        </div>
+          
       }
     </main>
   )

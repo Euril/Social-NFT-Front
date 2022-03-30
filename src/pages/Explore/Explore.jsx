@@ -1,4 +1,5 @@
 import styles from './Explore.module.css'
+import loading from '../loading.module.css'
 import { useEffect, useState } from 'react'
 import { useNavigate, Navigate, useLocation } from 'react-router-dom'
 import { getExploreFeed } from '../../services/postService'
@@ -71,7 +72,9 @@ return (
         </div>
     </div>
   :
-  <h1>Loading...</h1>
+    <div className={loading.loading}>
+      <i class="fas fa-spinner fa-pulse fa-2x"></i>
+    </div>
   }
 
       {/* <div className="post-card-container">

@@ -1,4 +1,5 @@
 import styles from './Messages.module.css'
+import loading from '../loading.module.css'
 import ChatHistoryContainer from "./ChatHistoryContainer"
 import MessageContainer from "./MessageContainer"
 import { useEffect, useState } from 'react'
@@ -116,6 +117,8 @@ const Messages = ({ profile }) => {
   
 
   return (
+    <> 
+    {allChatHistories && activeChatHistory ? 
     <div className={styles.container}>
     <div className={styles.messages}>
       {/* <h1>All Chat Histories Length: {allChatHistories?.length}</h1> */}
@@ -137,6 +140,12 @@ const Messages = ({ profile }) => {
       </div>
     </div>
     </div>
+    :
+    <div className={loading.loading}>
+          <i class="fas fa-spinner fa-pulse fa-2x"></i>
+        </div>
+    }
+    </>
   )
 }
 
