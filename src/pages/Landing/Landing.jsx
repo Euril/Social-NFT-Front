@@ -60,7 +60,7 @@ const Landing = ({ user, profile, returnedPost}) => {
       {
         newsFeed  ? 
 
-        <div className="post-card-container">
+        <div>
           {newsFeed?.map(post => (
               <PostCard post={post} profile={profile} handleDeletedPost={handleDeletedPost} />
           ))}
