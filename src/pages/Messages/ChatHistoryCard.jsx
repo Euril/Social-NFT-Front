@@ -15,7 +15,10 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
     //console.log('Other profile id!!!!!!!!!!!!!!!!!!!!: ',otherProfileID)
     let otherProfile = upToDateProfiles?.filter(prof => prof._id == otherProfileID)[0]
   //  console.log('other profile!!!!!!!!!!!!!!!',otherProfile.email)
-    let otherProfileEmail = otherProfile?.email
+    // let otherProfileEmail = otherProfile?.email
+
+    //changed what this pulls, in now just pulls the entire other profile instead of just the email
+    let otherProfileEmail = otherProfile
     return otherProfileEmail
   }
 
@@ -38,17 +41,14 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
     <div className={styles.chatHistoryCard}>
       <div >
         {/* placeholder for avatar */}
-          <img 
-            src={`https://picsum.photos/id/9/50/50`} 
-            alt="Placeholder Avatar"
-          />
+        <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
       </div>
       <div>
          {
         otherProfilesEmail ?
         
           <div className={styles.chatHistoryNames} onClick={handleClick}>
-              <Link to=''>{otherProfilesEmail}</Link>
+              <Link to=''>{otherProfilesEmail?.email}</Link>
               
           </div>
         
