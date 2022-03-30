@@ -19,15 +19,19 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
     <div className={styles.postCardContainer}>
       <hr />
       <div className={styles.card}>
-        <div >
+        {/* <div > */}
+        <div className={styles.cardHeader}>
           <p 
-            className={styles.username}> 
+            className={styles.username}>
+              
               <Link 
                 to={`/${post.author.email}`}>
                   {post.author.email}
               </Link> 
+              </p>
               {post?.author?._id == profile?._id ? <EditDeletePost post={post} handlePostDelete={handlePostDelete}/> : <></>}
-            </p>
+            
+        </div>
         <img
             src={post.images}
             alt='post'
@@ -41,11 +45,14 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
               </span>
               {post?.caption}
           </p>
-          
+          <div className={styles.cardFooter}>
           <PostLikes post={post} profile={profile}/> 
-
+          
+          
           <CommentsContainer post={post} profile={profile}/>
-        </div>
+          </div>
+          
+        {/* </div> */}
       </div>
         
     </div>

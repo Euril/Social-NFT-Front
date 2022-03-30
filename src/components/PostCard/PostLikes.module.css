@@ -1,9 +1,11 @@
 .likesContainer {
     display: flex;
+    width:95%;
     flex-direction: row;
     background-color: inherit;
     padding-left: 20px;
     padding-right: 20px;
+    align-items: center;
     justify-content: space-between;
 }
 
