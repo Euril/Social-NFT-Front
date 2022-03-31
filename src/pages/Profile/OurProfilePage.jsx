@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import MintNFT from './MintNFT';
 import SocialNft from '../../artifacts/contracts/MyNFT.sol/SocialNFT.json'
 import { ethers } from 'ethers'
+<<<<<<< HEAD
 import { useState, useEffect } from 'react'
 import MintNFTMapped from './MintNFTMapped';
+=======
+import React, { useState, useEffect } from 'react'
+>>>>>>> 10d61ba86700f9362c38adb7a48ee70fcb763514
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
@@ -116,8 +120,48 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
               </div>
             ))}
           </div>
+          <div className={styles.profileFollowersBar}>
+            <ul>
+              <li>
+                <span className={styles.bolder}>{profToRender.following?.length}
+                </span> Following 
+              </li>
+              <li>
+                <span className={styles.bolder}>{profToRender.followers?.length}
+                </span> Followers
+              </li>
+            </ul>
+          </div>
+            <div className={styles.profileBio}>
+              <p className={styles.bolder}>{profToRender.email}</p>
+              <p>Bio: {profToRender.bio}</p>
+            </div>
+        </div>
+        
+        <div className={styles.gallery}>
+          <hr></hr>
+            <div className={styles.galleryMenu}>
+              <h4>Posts</h4>
+              <h4> Collections</h4>
+            </div>
+            <MintNFT 
+              contract={contract} 
+              contractAddress={contractAddress} 
+              provider={provider} 
+              signer={signer} 
+              key={profile._v}
+            />
+            <div className={styles.posts}>
+              {profToRender.posts?.map(post => (
+                <img 
+                  src={post.images} 
+                  alt="profile post"
+                />
+              ))}
+            </div>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

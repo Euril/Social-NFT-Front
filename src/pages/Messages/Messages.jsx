@@ -2,7 +2,7 @@ import styles from './Messages.module.css'
 import loading from '../loading.module.css'
 import ChatHistoryContainer from "./ChatHistoryContainer"
 import MessageContainer from "./MessageContainer"
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import { getChatHistories, createChatHistory, addMessage } from "../../services/messageService"
 import { getSelectProfiles } from "../../services/profileService"
@@ -97,7 +97,7 @@ const Messages = ({ profile }) => {
 
 
   return (
-    <> 
+    <React.Fragment key={profile._v}> 
     {allChatHistories && activeChatHistory ? 
     <div className={styles.container}>
     <div className={styles.messages}>
@@ -109,7 +109,7 @@ const Messages = ({ profile }) => {
         allChatHistories={allChatHistories} 
         upToDateProfiles={upToDateProfiles} 
         setActiveChatHistory={setActiveChatHistory}
-        key={profile._v}
+       
       />
       </div>
       <div className={styles.messagesContainer}>
@@ -117,7 +117,6 @@ const Messages = ({ profile }) => {
         activeChatHistory={activeChatHistory} 
         profile={profile} 
         handleAddMessage={handleAddMessage}
-        key={profile._v}
       />
       </div>
     </div>
@@ -127,7 +126,7 @@ const Messages = ({ profile }) => {
           <i class="fas fa-spinner fa-pulse fa-2x"></i>
         </div>
     }
-    </>
+    </React.Fragment>
   )
 }
 

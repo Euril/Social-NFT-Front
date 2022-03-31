@@ -38,12 +38,7 @@ const EditProfile = ({loggedInUser, profile, setProfile}) => {
 
 
   useEffect(()=>{
-    //console.log('formData in useEffect: ',formData)
   }, [formData])
-
-  //const { bio, profilePicture } = formData
-
- 
 
 
 
