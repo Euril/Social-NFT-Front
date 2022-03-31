@@ -15,6 +15,7 @@ const LoadedProfilePage = ({profiles, loggedInUser, profToRender, ourProfile, ha
                     loggedInUser={loggedInUser} 
                     profToRender={profToRender}
                     profile={profile}
+                    key={profile._id}
                 />
                 
                 :

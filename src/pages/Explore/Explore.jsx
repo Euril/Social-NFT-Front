@@ -20,10 +20,7 @@ let lastWordInURL = getLastWordInURL
 const handleDeletedPost = (deletedPost) => {
   let tempExploreFeed = exploreFeed
   try {
-    //console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
-    //console.log('length before: ', tempNewsFeed.length)
     tempExploreFeed = exploreFeed.filter(post => post._id != deletedPost._id)
-    //console.log('length after: ', tempNewsFeed.length)
   }
 
   catch (error) {
@@ -34,10 +31,6 @@ const handleDeletedPost = (deletedPost) => {
 } 
 
 useEffect(() => {
-  //lastWordInURL = getLastWordInURL()
-  //console.log('last item in URL: ', lastWordInURL)
-  //if (lastWordInURL !== 'explore') navigate(`/${lastWordInURL}`)
-  //console.log('in use effect in explore')
  if (!exploreFeed) {
   getExploreFeed()
   .then(fetchedExploreFeed => setExploreFeed(fetchedExploreFeed))
@@ -59,14 +52,24 @@ return (
         <div className={styles.containerRow}>
           
             {exploreFeed.map(post => (
-              <div className={styles.col} onClick={() => {
+              <div 
+                className={styles.col}
+                key={profile._id} 
+                onClick={() => {
               setModalPost(post); handleShow();}}>
       
                 <img
                 src={post.images}
                 alt='post'
                 />
-              <ModalPost handleClose={handleClose} handleDeletedPost={handleDeletedPost} post={modalPost}  profile={profile} show={show}/>
+              <ModalPost 
+                handleClose={handleClose} 
+                handleDeletedPost={handleDeletedPost} 
+                post={modalPost}  
+                profile={profile} 
+                show={show}
+                
+              />
               </div>
             ))}
         </div>
@@ -76,41 +79,8 @@ return (
       <i class="fas fa-spinner fa-pulse fa-2x"></i>
     </div>
   }
-
-      {/* <div className="post-card-container">
-        {exploreFeed?.map(post => (
-            <PostCard post={post}  profile={profile} handleDeletedPost={handleDeletedPost} />
-        ))}
-      </div> */}
-
   </>
-  // <main className={styles.container}>
-  //   <h1>Explore</h1>
-  //   {
-  //     exploreFeed  ? 
 
-  //     <div className="post-card-container">
-  //       {exploreFeed.map(post => (
-  //           <PostCard post={post}  profile={profile} handleDeletedPost={handleDeletedPost} />
-  //       ))}
-  //     </div>
-
-  //     :
-
-  //     <h1>Loading...</h1>
-
-  //   }
-    
-  //   <ul>
-  //     //👇 was commented out already
-  //     {/* {newsFeed?.map(post => (
-  //       <img
-  //         src={post.images}
-  //         alt='post'
-  //       />
-  //     ))} */}
-  //   </ul>
-  // </main>
   
   )
 
