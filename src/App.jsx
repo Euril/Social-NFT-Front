@@ -84,7 +84,7 @@ const App = () => {
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-   // console.log('after editing post, edited post: ', editedPost)
+    console.log('after editing post, edited post: ', editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map((post) => {
       try {
@@ -117,7 +117,7 @@ const App = () => {
     // getProfileList()
     // console.log('ARRAY OF ALL PROFILES', tempProfiles)
     setSearchResults({
-      tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
+      tempProfiles: tempProfiles?.filter(profile => profile.email.includes(search.query))
     })
     navigate('/search')
   }
