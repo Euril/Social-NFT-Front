@@ -18,7 +18,7 @@
     box-shadow: 0px 0px 4px grey;
     border-radius: 10px;
     border: 1px solid #ccc;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .container a{
@@ -124,7 +124,10 @@ h3{
 
 .messageFooter{
     grid-area: 3 / 1 / 4 / 2;
-    width:50%;
+    /* width:50%; */
+    display:flex;
+    justify-content: center;
+    padding:10px 20px
     /* margin-bottom: 80px; */
 }
 
@@ -134,9 +137,13 @@ h3{
     background-color: white;
     border-radius: 15px;
     width:100%;
-    word-wrap:break-word;
-    word-break:break-all;
+    /* word-wrap:break-word;
+    word-break:break-all; */
     inline-size: 150px;
+}
+
+.messageFooter input[type='text']{
+    /* width:100%; */
 }
 
 .chatHeader, .chatHistories, .messageHeader, .messageBody{
@@ -177,6 +184,7 @@ h6{
     padding: 10px 15px;
     background-color: gainsboro;
     color:black;
+    max-width: 50%;
 }
 
 .Right{
@@ -190,6 +198,7 @@ h6{
     background-color: dodgerblue;
     color:white;
     padding: 10px 15px;
+    max-width: 50%;
 }
 
 @media screen and (max-width:1024px){

@@ -25,7 +25,13 @@ const handleDeleteComment = () => {
             onClick={handleDeleteComment}
             className={styles.delete}
           >
-              <i class="fa-solid fa-trash-can"></i>
+            {comment.author === profileID? 
+             <i class="fa-solid fa-trash-can"></i>
+             :
+             <></>  
+          }
+             
+
           </span> 
           <div className={styles.comment}>
             <span 
