@@ -1,6 +1,5 @@
-
 import { ethers } from "ethers"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
@@ -13,13 +12,21 @@ const MintNFT = ({contractAddress, signer, provider, contract}) => {
         setFormData({MetaDataURI: e.target.value})
     }
 
+
+    // useEffect(()=>{
+    //     console.log('getProps: ', getProps())
+    //     console.log('please contract: ', contract)
+    // },[getProps, contract])
+
+    console.log(contractAddress, signer, provider, contract)
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('hande submit sanity check')
-        console.log('contract: ', contract)
-        console.log('contract address: ', contractAddress)
-        console.log('signer: ', signer)
-        console.log('provider: ', provider)
+        console.log('mn hande submit sanity check')
+        console.log('mn contract: ', contract)
+        console.log('mn contract address: ', contractAddress)
+        console.log('mn signer: ', signer)
+        console.log('mn provider: ', provider)
 
         mintToken(contract, signer, formData.MetaDataURI)
     }

@@ -8,7 +8,11 @@ import { useState, useEffect } from 'react'
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
   const [connectedToBlockchain, setConnectedToBlockchain] = useState()
-  
+  const [contractState, setContractState] = useState()
+  const [providerState, setProviderState] = useState()
+  const [contractAddressState, setContractAddressState] = useState()
+  const [signerState, setSignerState] = useState()
+  //contractAddressState && providerState && signerState ? 
 
   let contractAddress
   let provider
@@ -21,13 +25,25 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
       provider = new ethers.providers.Web3Provider(window.ethereum)
       signer = provider.getSigner()
       contract = new ethers.Contract(contractAddress, SocialNft.abi, signer)
+      setContractState(contract)
+      setContractAddressState(contractAddress)
+      setProviderState(provider)
+      setSignerState(signer)
+
+      console.log('p about to init vars')
+      console.log('p contract: ', contract)
+      console.log('p contract address: ', contractAddress)
+      console.log('p signer: ', signer)
+      console.log('p provider: ', provider)
       setConnectedToBlockchain(true)
     } catch (error)  {
       setConnectedToBlockchain(false)
     }
   },[])
 
-
+  const getProps = () => {
+    return [contract, signer, provider, contractAddress]
+  }
 
 
   return (
@@ -70,12 +86,19 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
             {/*⚠️ Placeholder for collections */}
             <h4> Collections</h4>
           </div>
-          <MintNFT 
-            contract={contract} 
-            contractAddress={contractAddress} 
-            provider={provider} 
-            signer={signer} 
-          />
+          {
+            contractState && contractAddressState && providerState && signerState ? 
+              <MintNFT 
+              contract={contractState} 
+              contractAddress={contractAddressState} 
+              provider={providerState} 
+              signer={signerState} 
+            />
+            :
+
+            <hi>no props</hi>
+          }
+
           <div className={styles.posts}>
             {profToRender.posts?.map(post => (
               <img 
