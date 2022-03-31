@@ -4,12 +4,12 @@ import styles from './EditProfileForm.module.css'
 import * as profileService from '../../services/profileService'
 import Profile from './Profile'
 
-const EditProfile = ({loggedInUser, profile, setProfile}) => {
+const NewProfileEdit = ({loggedInUser, profile, setProfile}) => {
   const formElement = useRef()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    bio: profile?.bio,
-    profilePicture: profile?.profilePicture,
+    bio: "",
+    profilePicture: null,
   })
 
 
@@ -20,7 +20,7 @@ const EditProfile = ({loggedInUser, profile, setProfile}) => {
     profileFormData.append('profilePicture', formData.profilePicture)
     //console.log('formData', profileFormData.entries().next())
     let returnedProfile = await profileService.updateProfile(profileFormData)
-    setProfile({...returnedProfile, navigateTo: `/${profile.email}`})
+    setProfile({...returnedProfile, navigateTo: '/'})
     //navigate()
     //console.log('returned profile:', returned)
   }
@@ -56,7 +56,7 @@ const EditProfile = ({loggedInUser, profile, setProfile}) => {
       <h1>Edit Profile</h1>
       <div className={styles.inputContainer}>
         <label htmlFor="bioInput" className={styles.label}>Bio:</label>
-        <textarea onChange={handleChangeBio} name="bio" minLength={1} id="bioInput">{profile.bio}</textarea>
+        <textarea onChange={handleChangeBio} name="bio" minLength={1} id="bioInput"></textarea>
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="profilePictureFile" className={styles.label}><i className={styles.photo} class="fa-solid fa-camera"></i></label>
@@ -77,4 +77,4 @@ const EditProfile = ({loggedInUser, profile, setProfile}) => {
   )
 }
 
-export default EditProfile
+export default NewProfileEdit

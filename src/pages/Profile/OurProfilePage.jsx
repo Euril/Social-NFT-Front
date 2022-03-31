@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
   const [connectedToBlockchain, setConnectedToBlockchain] = useState()
+  
 
   let contractAddress
   let provider
@@ -25,8 +26,6 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
       setConnectedToBlockchain(false)
     }
   },[])
-
- 
 
 
 
@@ -79,7 +78,7 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
           />
           <div className={styles.posts}>
             {profToRender.posts?.map(post => (
-              <img src={`${post?.images}`} alt="profile post" />
+              <img src={`/${profToRender?.email}/edit`} alt="profile post" />
             ))}
           </div>
       </div>
