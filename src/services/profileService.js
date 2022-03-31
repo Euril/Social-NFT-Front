@@ -9,6 +9,13 @@ async function getAllProfiles() {
   return await res.json()
 }
 
+async function getPopularProfiles() {
+  const res = await fetch(`${BASE_URL}/popular`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json()
+}
+
 function getProfile(email) {
   //console.log('email in getProfile', email)
   return fetch(`${BASE_URL}/${email}`, {
@@ -77,5 +84,6 @@ export {
   follow,
   unfollow,
   getSelectProfiles,
-  updateProfile
+  updateProfile,
+  getPopularProfiles
 }

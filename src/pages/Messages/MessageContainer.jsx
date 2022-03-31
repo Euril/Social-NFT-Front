@@ -44,7 +44,7 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                         </div>
                             {message.author !== profile._id ?
                         <div className={styles.Left}>
-                            <h5>{message.author}</h5>
+                            {/* <h5>{message.author}</h5> */}
                             <p>{message.text}</p>
                         </div>
                         :
