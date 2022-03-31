@@ -38,7 +38,7 @@ const handleDeleteComment = () => {
           </div>
           <div className={styles.commentLike}>
              <button  onClick={handleCommentLike}><i class="fa-regular fa-thumbs-up"></i></button>
-            <h4>{commentLikedBy.length}</h4>
+            <h4 className={styles.number}>{commentLikedBy.length}</h4>
           </div>        
         </div>
     </li>

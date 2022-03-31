@@ -15,6 +15,17 @@
     font-size: 30px;    
 }
 
+a {
+    color: black;
+  text-decoration: none;
+  text-shadow: 0px .2px .3px grey;
+}
+
+a:hover {
+    color: rgb(228, 220, 213);
+    text-shadow: none;
+}
+
 .navContainer h2 {
     font-family: 'Dancing Script', cursive;
     /* padding-left: 100px; */
