@@ -38,9 +38,9 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
   },[chatHistory, upToDateProfiles])
 
   return (
+    <Link to=''>
     <div className={styles.chatHistoryCard}>
       <div >
-        {/* placeholder for avatar */}
         <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
       </div>
       <div>
@@ -48,7 +48,7 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
         otherProfilesEmail ?
         
           <div className={styles.chatHistoryNames} onClick={handleClick}>
-              <Link to=''>{otherProfilesEmail?.email}</Link>
+              {otherProfilesEmail?.email}
               
           </div>
         
@@ -59,6 +59,7 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
       </div>
      
     </div>
+    </Link>
   )
 }
 

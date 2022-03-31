@@ -142,7 +142,7 @@ const Messages = ({ profile }) => {
     </div>
     </div>
     :
-    <div className={loading.loading}>
+        <div className={loading.loading}>
           <i class="fas fa-spinner fa-pulse fa-2x"></i>
         </div>
     }

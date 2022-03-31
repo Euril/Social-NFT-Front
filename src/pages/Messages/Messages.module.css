@@ -18,7 +18,18 @@
     box-shadow: 0px 0px 4px grey;
     border-radius: 10px;
     border: 1px solid #ccc;
-    margin-top: 140px;
+    margin-top: 100px;
+}
+
+.container a{
+    color: black;
+    text-decoration: none;
+}
+
+/* THIS IS IT  the hover for chat histories effect*/
+.container a:focus{
+    background-color: lightgray;
+    border-radius:1px;
 }
 
 h3{
@@ -66,7 +77,7 @@ h3{
 
 .chatHistoryCard {
     text-align: center;
-    
+    padding:30px;
 }
 .chatHistoryCard img{
     float:left;
@@ -113,9 +124,8 @@ h3{
 
 .messageFooter{
     grid-area: 3 / 1 / 4 / 2;
-    position:absolute;
-    bottom:0;
-    margin-bottom: 80px;
+    width:50%;
+    /* margin-bottom: 80px; */
 }
 
 .messageFooter input{
@@ -124,6 +134,9 @@ h3{
     background-color: white;
     border-radius: 15px;
     width:100%;
+    word-wrap:break-word;
+    word-break:break-all;
+    inline-size: 150px;
 }
 
 .chatHeader, .chatHistories, .messageHeader, .messageBody{
@@ -143,7 +156,7 @@ h3{
 h6{
     text-align: center;
 }
-.Left{
+/* .Left{
     display:flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -151,6 +164,19 @@ h6{
 
 .Left p, h5{
     margin:0;
+} */
+
+.Left {
+    display:flex;
+    justify-content: flex-start;
+}
+
+.Left p{
+    border:1px;
+    border-radius:30px;
+    padding: 10px 15px;
+    background-color: gainsboro;
+    color:black;
 }
 
 .Right{
@@ -160,8 +186,16 @@ h6{
 
 .Right p{
     border:1px;
-    border-radius:50px;
+    border-radius:30px;
+    background-color: dodgerblue;
+    color:white;
     padding: 10px 15px;
-    background-color: gainsboro;
+}
+
+@media screen and (max-width:1024px){
+    .container{
+        width: 100%;
+        margin-top: 10px;
+    }
 }
 
