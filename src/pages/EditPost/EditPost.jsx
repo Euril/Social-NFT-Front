@@ -125,7 +125,7 @@ const EditPost = ({profile, handleEditPost}) => {
       
         <div className={styles.container}>
           <div className={styles.header}> 
-            <h1>Create New Post</h1>
+            <h1>Edit Post</h1>
             <hr></hr>
           </div>
           <div>

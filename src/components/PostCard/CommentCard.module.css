@@ -9,6 +9,7 @@
 }
 
 .author {
+    margin-top: 17px;
     justify-content: center;
     align-items: left;
     display: flex;
@@ -31,8 +32,6 @@
 .commentLike {
     background-color: inherit;
     padding-left: 10px;
-    width: auto;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +40,23 @@
 }
 
 .commentLike > button {
+    display: flex;
+    color: black;
     background-color: inherit;
     padding: 2px;
     border: none;
     cursor: pointer;
+    margin-right: 10px;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.number {
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
