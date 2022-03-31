@@ -164,7 +164,7 @@ const AddPost = ({profile, handleAddPost}) => {
         <div>
           <h2>
 
-          Please download MetaMask at <a href="http://metamask.io/download">metamask.io</a>
+          Please download MetaMask at <a href="http://metamask.io/download" target="_blank">metamask.io</a>
           </h2>
         </div>
 
