@@ -23,6 +23,7 @@ a {
 
 a:hover {
     color: rgb(228, 220, 213);
+    text-shadow: none;
 }
 
 .navContainer h2 {
