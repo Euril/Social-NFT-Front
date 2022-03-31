@@ -27,6 +27,7 @@
   width:100%;
   /* if we use something like masonry we can remove the max height issue but I think its bet to have a uniform height-width for just a grid */
   max-height:300px;
+  cursor: pointer;
 }
 
 .modal {
