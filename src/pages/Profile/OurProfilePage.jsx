@@ -4,6 +4,7 @@ import MintNFT from './MintNFT';
 import SocialNft from '../../artifacts/contracts/MyNFT.sol/SocialNFT.json'
 import { ethers } from 'ethers'
 import { useState, useEffect } from 'react'
+import MintNFTMapped from './MintNFTMapped';
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
@@ -101,10 +102,18 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
           <div className={styles.posts}>
             {profToRender.posts?.map(post => (
-              <img 
-                src={post.images} 
-                alt="profile post"
-              />
+              <div>
+                  <img 
+                  src={post.images} 
+                  alt="profile post"
+                />
+                {
+                  contractState && contractAddressState && providerState && signerState ? 
+                  <h1>NFT Mapped</h1>
+                  :
+                  <hi>no props</hi>
+              }
+              </div>
             ))}
           </div>
       </div>
