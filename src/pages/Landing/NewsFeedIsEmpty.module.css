@@ -1,0 +1,87 @@
+.searchBarDropdown {
+  width: 30rem;
+}
+.resultsContainer{
+  height:500px;
+  overflow: auto;
+}
+
+.results{
+  text-align: left;
+  width: 100%;
+  max-width: 360px;
+  margin: 2px auto;
+  background-color: white;
+  /* border: 1px solid black;
+  border-radius: 5px; */
+}
+.resultsCard{
+  padding: 15px 15px;
+}
+.results img{
+  float:left;
+  width:25px;
+  height:25px;
+  border-radius: 50%;
+  margin-right:2px;
+}
+.results h4{
+  color:black;
+  margin:0;
+
+}
+.results h5{
+  color:gray;
+  margin:0;
+}
+
+
+/* .testing {
+  margin-top: 5vh;
+  height: 100%;
+  width: 100%;
+}
+
+
+.profilePicture {
+  border-radius: 50%;
+  height:  6vh;
+  width: 6vh;
+}
+
+
+.suggestionCard {
+  display: grid;
+  grid-template-columns: 7vh 1fr;
+  border: 1.5px solid darkgray;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestionCard img {
+  text-align: left;
+}
+ 
+.suggestionContainer {
+  width: 20vw;
+  border: inherit;
+  margin: 0 auto;
+}
+
+.username {
+  display: inline;
+  justify-self: center;
+  align-self: center;
+}
+
+
+p {
+  display: inline;
+  vertical-align: middle;
+  font: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0
+} */
+

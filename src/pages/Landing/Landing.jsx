@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
+import NewsFeedIsEmpty from './NewsFeedIsEmpty'
 
 const Landing = ({ user, profile, returnedPost}) => {
   const [newsFeed, setNewsFeed] = useState(null)
@@ -59,7 +60,7 @@ const Landing = ({ user, profile, returnedPost}) => {
   return (
     <main className={styles.container}>
       {
-        newsFeed  ? 
+        newsFeed?.length > 0 ? 
 
         <div>
           {newsFeed?.map(post => (
@@ -70,9 +71,16 @@ const Landing = ({ user, profile, returnedPost}) => {
         :
         // fix loading page with cool animation gif
         // <span className={styles.loading}>Loading...</span>
-        <div className={loading.loading}>
-          <i class="fas fa-spinner fa-pulse fa-2x"></i>
-        </div>
+
+        newsFeed == null || newsFeed?.length == 0 ?
+
+          <NewsFeedIsEmpty />
+
+        :
+
+          <div className={loading.loading}>
+            <i class="fas fa-spinner fa-pulse fa-2x"></i>
+          </div>
           
       }
     </main>
