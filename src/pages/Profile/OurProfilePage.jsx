@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import MintNFT from './MintNFT';
 import SocialNft from '../../artifacts/contracts/MyNFT.sol/SocialNFT.json'
 import { ethers } from 'ethers'
-<<<<<<< HEAD
+
 import { useState, useEffect } from 'react'
 import MintNFTMapped from './MintNFTMapped';
-=======
-import React, { useState, useEffect } from 'react'
->>>>>>> 10d61ba86700f9362c38adb7a48ee70fcb763514
+
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
@@ -158,10 +156,9 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
                   alt="profile post"
                 />
               ))}
-            </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 
