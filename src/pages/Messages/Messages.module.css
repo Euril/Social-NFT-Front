@@ -185,6 +185,8 @@ h6{
     background-color: gainsboro;
     color:black;
     max-width: 50%;
+    word-wrap:break-word;
+    word-break:break-all;
 }
 
 .Right{
@@ -199,6 +201,8 @@ h6{
     color:white;
     padding: 10px 15px;
     max-width: 50%;
+    word-wrap:break-word;
+    word-break:break-all;
 }
 
 @media screen and (max-width:1024px){
