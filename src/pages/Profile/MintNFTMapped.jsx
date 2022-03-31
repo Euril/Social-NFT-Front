@@ -4,35 +4,33 @@ import { useState, useEffect } from "react"
 
 
 
-const MintNFTMapped = ({contractAddress, signer, provider, contract}) => {
+const MintNFTMapped = ({contractAddress, signer, provider, contract, post}) => {
     const [formData, setFormData] = useState({MetaDataURI: ""})
 
     const handleChange = (e) => {
-        //console.log('current form value: ', e.target.value)
+       
         setFormData({MetaDataURI: e.target.value})
     }
 
 
-    // useEffect(()=>{
-    //     console.log('getProps: ', getProps())
-    //     console.log('please contract: ', contract)
-    // },[getProps, contract])
+  
 
     console.log(contractAddress, signer, provider, contract)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('mn hande submit sanity check')
-        console.log('mn contract: ', contract)
-        console.log('mn contract address: ', contractAddress)
-        console.log('mn signer: ', signer)
-        console.log('mn provider: ', provider)
+        console.log('mnmaaa hande submit sanity check')
+        console.log('mnmaaa contract: ', contract)
+        console.log('mnmaaa contract address: ', contractAddress)
+        console.log('mnmaaa signer: ', signer)
+        console.log('mnmaaa provider: ', provider)
+        console.log('mnmaaa post: ', post)
 
-        mintToken(contract, signer, formData.MetaDataURI)
+        mintToken(contract, signer, post.MetaDataURL[0])
     }
 
     const getMintedStatus = async (MetaDataURI) => {
-        const result = await contract.isContentOwned(MetaDataURI)
+        const result = await contract.isContentOwned(post.MetaDataURL[0])
         console.log("🚀 ~ result", result);
     }
 
@@ -45,7 +43,7 @@ const MintNFTMapped = ({contractAddress, signer, provider, contract}) => {
         const result = await contract.payToMint(addr, MetaDataURI, {
             value: ethers.utils.parseEther('0.05')
         })
-        console.log('success 4')
+        console.log('success 4', result)
         await result.wait()
         console.log('success 5')
         getMintedStatus(MetaDataURI)
@@ -54,8 +52,7 @@ const MintNFTMapped = ({contractAddress, signer, provider, contract}) => {
     return ( 
         <div>
             <form onSubmit={handleSubmit}>
-                IFPS URI: <input type="text" name="MetaDataURI" onChange={handleChange}/>
-                <button type="submit">submit</button>
+                <button type="submit">Mint NFT</button>
             </form>
         </div>
      );
