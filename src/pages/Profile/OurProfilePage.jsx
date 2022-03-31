@@ -15,7 +15,6 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
   const [providerState, setProviderState] = useState()
   const [contractAddressState, setContractAddressState] = useState()
   const [signerState, setSignerState] = useState()
-  //contractAddressState && providerState && signerState ? 
 
   let contractAddress
   let provider
@@ -78,7 +77,7 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
         </div>
           <div className={styles.profileBio}>
             <p className={styles.bolder}>{profToRender.email}</p>
-            <p>Bio: {profToRender.bio}</p>
+            <p>{profToRender.bio}</p>
           </div>
       </div>
       
@@ -86,8 +85,6 @@ function OurProfilePage ({profToRender, loggedInUser, profile}) {
         <hr></hr>
           <div className={styles.galleryMenu}>
             <h4>Posts</h4>
-            {/*⚠️ Placeholder for collections */}
-            <h4> Collections</h4>
           </div>
           {/* {
             contractState && contractAddressState && providerState && signerState ? 
