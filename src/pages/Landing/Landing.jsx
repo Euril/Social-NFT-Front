@@ -1,6 +1,6 @@
 import styles from './Landing.module.css'
 import loading from '../loading.module.css'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { getNewsFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
@@ -13,10 +13,7 @@ const Landing = ({ user, profile, returnedPost}) => {
   const handleDeletedPost = (deletedPost) => {
     let tempNewsFeed = newsFeed
     try {
-     // console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
-     // console.log('length before: ', tempNewsFeed.length)
       tempNewsFeed = newsFeed.filter(post => post._id != deletedPost._id)
-     // console.log('length after: ', tempNewsFeed.length)
     }
 
     catch (error) {
@@ -58,6 +55,7 @@ const Landing = ({ user, profile, returnedPost}) => {
   , [])
 
   return (
+
     <main className={styles.container}>
       {
         newsFeed?.length > 0 ? 
@@ -84,6 +82,7 @@ const Landing = ({ user, profile, returnedPost}) => {
           
       }
     </main>
+
   )
 }
 
