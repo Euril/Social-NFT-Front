@@ -24,7 +24,6 @@ const Landing = ({ user, profile, returnedPost}) => {
   } 
   
   useEffect(() => {
-  console.log('about to fetch newsfeed')
    getNewsFeed()
    .then(fetchedNewsFeed => {
      if (returnedPost && !returnedPost.addedToFeed) {
@@ -62,7 +61,7 @@ const Landing = ({ user, profile, returnedPost}) => {
 
         <div>
           {newsFeed?.map(post => (
-              <PostCard key={user._id} post={post} profile={profile} handleDeletedPost={handleDeletedPost} />
+              <PostCard key={post._id} post={post} profile={profile} handleDeletedPost={handleDeletedPost} />
           ))}
         </div>
 

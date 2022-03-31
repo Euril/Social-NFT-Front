@@ -51,7 +51,7 @@ const CommentsContainer = ({post, profile}) => {
                         comment={comment} 
                         postID={post._id} 
                         profileID={profile._id} handleDeletedComment={handleDeletedComment}
-                        key={profile._id}
+                        key={comment._id}
                     />
                 ))
             }

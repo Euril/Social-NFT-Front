@@ -19,12 +19,9 @@ import EditProfile from './pages/Profile/EditProfile'
 import styles from './components/NavBar/NavBar.module.css'
 import NewProfileEdit from './pages/Profile/NewProfileEdit'
 
-
-
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
-
 
   // States for search refactor as you please
   //⬇️  Holds the array of all profiles to be then filtered
@@ -39,7 +36,6 @@ const App = () => {
 
   const navigate = useNavigate()
 
-
   useEffect(() => {
     if (user) {
       profileService.getProfile(user.email)
@@ -48,7 +44,6 @@ const App = () => {
       })
       profileService.getAllProfiles()
       .then(profiles => { 
-        console.log('This is PRofile: !', profiles)
         setTempProfiles(profiles)
       })
     } else {
@@ -56,19 +51,13 @@ const App = () => {
     }
   }, [user])
 
-
   useEffect(()=>{
-  //  console.log('last post: ', profile?.posts?.at(-1))
     if (profile.navigateTo) {
       let navigateToLocation = profile.navigateTo
-      //console.log('before delete navigate to: ',profile.navigateTo)
       delete profile.navigateTo
-      //console.log('navigateTo after delete: ', profile.navigateTo)
       navigate(navigateToLocation)
     }
   }, [profile])
-
-
 
   const handleLogout = () => {
     authService.logout()
@@ -82,17 +71,13 @@ const App = () => {
 
   const handleAddPost = async (newPostData) => {
     const newPost = await postService.create(newPostData)
-    console.log("🚀 ~ newPost", newPost);
     profile.posts.push(newPost)
-    //await setProfile(profile)
     setReturnedPost(newPost)
     setProfile({...profile, navigateTo:'/'})
-    //navigate('/')
   }
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-    console.log('after editing post, edited post: ', editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map((post) => {
       try {
@@ -108,9 +93,8 @@ const App = () => {
     setProfile({...tempProfile, navigateTo: '/'})
   }
 
- 
   const handleSubmitSearch = evt => {
-    evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away
+    evt.preventDefault() 
     setSearchResults({
       tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
     })

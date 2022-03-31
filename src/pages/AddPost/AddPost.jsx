@@ -4,13 +4,9 @@ import { Navigate, useNavigate } from "react-router-dom"
 import styles from './AddPost.module.css'
 import { useMoralis } from "react-moralis";
 import { Moralis } from 'moralis'
-// import { Button } from 'web3uikit'
-
 
 const AddPost = ({profile, handleAddPost}) => {
-
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
-
 
   // MetaMask Login
   const login = async () => {
@@ -32,7 +28,6 @@ const AddPost = ({profile, handleAddPost}) => {
     await logout();
     console.log("logged out");
   }
-
 
   const formElement = useRef()
   const navigate = useNavigate()

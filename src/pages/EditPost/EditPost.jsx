@@ -7,13 +7,11 @@ import { Moralis } from 'moralis'
 
 // import { Button } from 'web3uikit'
 
-
 const EditPost = ({profile, handleEditPost}) => {
 
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
   const location = useLocation()
   const post = location.state.post
- // console.log('location: ', location)
 
   // MetaMask Login
   const login = async () => {
@@ -78,7 +76,6 @@ const EditPost = ({profile, handleEditPost}) => {
       setSubmitted(true)
       gogo()
       .then(tempIPFSURL => {postFormData.append('MetaDataURL', tempIPFSURL); checkFormData(postFormData); handleEditPost(postFormData)})
-      //handleAddPost(postFormData)
     }
 
     //gogo()
@@ -114,9 +111,6 @@ const EditPost = ({profile, handleEditPost}) => {
     return file._url
     //setFormData({...formData,IPFS_URL: file._url})
   }
-
-  
-
 
   return (
     <>
