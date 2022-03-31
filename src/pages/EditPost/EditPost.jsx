@@ -58,6 +58,9 @@ const EditPost = ({profile, handleEditPost}) => {
   }
   const handleSubmit = async (evt) => {
     evt.preventDefault()
+
+    if (!isAuthenticated) return
+
     console.log('hello handle submit')
     const postFormData = new FormData()
     postFormData.append('images', formData.images)
@@ -117,45 +120,70 @@ const EditPost = ({profile, handleEditPost}) => {
 
   return (
     <>
-    
-    <div className={styles.container}>
-      <div className={styles.header}> 
-        <h1>Edit Post</h1>
-        <hr></hr>
-      </div>
-      <div>
-        <form action="" ref={formElement} onSubmit={handleSubmit}>
-          <input 
-            type="file" 
-            id="imageFile" 
-            name="images" 
-            onChange={handleChangePhoto} 
-            className={styles.imageLabel} 
-            required
-          />
-          <div className={styles.metamask}>
-            
-            <h4>
-              Metamask Connection
-            </h4>
-            <button onClick={login}>Metamask Login</button>
-            <button onClick={logOut}>Metamask Logout</button>
+      {
+        handleEditPost ? 
+      
+        <div className={styles.container}>
+          <div className={styles.header}> 
+            <h1>Create New Post</h1>
+            <hr></hr>
           </div>
-          
           <div>
-            <textarea
-              placeholder="Write a caption..." 
-              name="caption" 
-              id='metadataCaption'
-              className={styles.caption} 
-              maxLength='1000' 
-              onChange={handleChange} 
-            ></textarea> 
+            {
+              window.ethereum ?
+
+            <form action="" ref={formElement} onSubmit={handleSubmit}>
+              <i className={styles.photo} class="fa-solid fa-camera"></i>
+              <input 
+                type="file" 
+                id="imageFile" 
+                name="images" 
+                accept=".jpg,.jpeg,.png,.gif"
+                onChange={handleChangePhoto} 
+                className={styles.imageLabel} 
+                required
+              />
+              <div className={styles.metamask}>
+                
+                <h4>
+                  Metamask Connection
+                </h4>
+                {
+                  !isAuthenticated ?
+                    <button onClick={login}>Metamask LOGIN</button>
+                  :
+                    <button onClick={logOut}>Metamask Logout</button>
+                }
+              </div>
+              
+              <div>
+                <textarea
+                  placeholder="Write a caption..." 
+                  name="caption" 
+                  id='metadataCaption'
+                  className={styles.caption} 
+                  maxLength='1000' 
+                  onChange={handleChange} 
+                >{post?.caption}</textarea> 
+              </div>
+              <button type="submit" >SHARE</button>
+            </form>
+            :
+
+            <div>
+              <h2>
+
+              Please download MetaMask at <a href="http://metamask.io/download" target="_blank">metamask.io</a>
+              </h2>
+            </div>
+
+          }
           </div>
-          <button type="submit" >SHARE</button>
-        </form>
-      </div>
-    </div>
+        </div>
+        :
+        // fix loading page with cool animation gif
+        <span className={styles.loading}>Loading...</span>
+        }
     </>
   )
 }

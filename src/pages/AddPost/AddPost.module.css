@@ -38,6 +38,7 @@ button {
   margin-top: 14px;
   float:right;
   cursor: pointer;
+  
 }
 
 .header{
@@ -81,4 +82,12 @@ input[type=file]::file-selector-button {
   text-align: center;
   text-decoration-line: underline;
   margin-top: 39px;
+}
+
+.photo {
+  font-size: 30px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

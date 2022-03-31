@@ -11,11 +11,6 @@ const AddPost = ({profile, handleAddPost}) => {
 
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
-  if (window.ethereum) {
-      
-  } else {
-
-  }
 
   // MetaMask Login
   const login = async () => {
@@ -60,6 +55,8 @@ const AddPost = ({profile, handleAddPost}) => {
   }
   const handleSubmit = async (evt) => {
     evt.preventDefault()
+
+    if (!isAuthenticated) return
 
     console.log('hello handle submit')
     const postFormData = new FormData()
@@ -132,10 +129,12 @@ const AddPost = ({profile, handleAddPost}) => {
           window.ethereum ?
 
         <form action="" ref={formElement} onSubmit={handleSubmit}>
+          <i className={styles.photo} class="fa-solid fa-camera"></i>
           <input 
             type="file" 
             id="imageFile" 
             name="images" 
+            accept=".jpg,.jpeg,.png,.gif"
             onChange={handleChangePhoto} 
             className={styles.imageLabel} 
             required
@@ -145,8 +144,12 @@ const AddPost = ({profile, handleAddPost}) => {
             <h4>
               Metamask Connection
             </h4>
-            <button onClick={login}>Metamask Login</button>
-            <button onClick={logOut}>Metamask Logout</button>
+            {
+              !isAuthenticated ?
+                <button onClick={login}>Metamask LOGIN</button>
+              :
+                <button onClick={logOut}>Metamask Logout</button>
+            }
           </div>
           
           <div>
