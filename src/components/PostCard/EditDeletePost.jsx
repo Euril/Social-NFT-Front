@@ -3,8 +3,6 @@ import styles from './PostCard.module.css'
 
 const EditDeletePost = ({handlePostDelete, post}) => {
 
-  
-
   return (
     <div className={styles.editDeletePost}>
       <span

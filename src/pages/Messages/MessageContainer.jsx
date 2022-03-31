@@ -1,4 +1,3 @@
-//import styles from './MessageContainer.module.css'
 import styles from './Messages.module.css'
 import { useRef, useState, useEffect } from "react";
 

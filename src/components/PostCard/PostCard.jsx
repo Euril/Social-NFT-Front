@@ -8,9 +8,7 @@ import EditDeletePost from './EditDeletePost.jsx'
 
 const PostCard = ({post, profile, handleDeletedPost}) => {
 
-
   const handlePostDelete = () => {
-    //console.log('clicked', post._id)
     deletePost({postID: post._id, resourceAuthorID: post.author._id})
     .then(deletedPost => handleDeletedPost(deletedPost))
   }
@@ -19,17 +17,16 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
     <div className={styles.postCardContainer}>
       <hr />
       <div className={styles.card}>
-        {/* <div > */}
         <div className={styles.cardHeader}>
           <p 
             className={styles.username}>
               
-              <Link 
-                to={`/${post.author.email}`}>
-                  {post.author.email}
-              </Link> 
-              </p>
-              {post?.author?._id == profile?._id ? <EditDeletePost post={post} handlePostDelete={handlePostDelete}/> : <></>}
+            <Link 
+              to={`/${post.author.email}`}>
+                {post.author.email}
+            </Link> 
+          </p>
+            {post?.author?._id == profile?._id ? <EditDeletePost post={post} handlePostDelete={handlePostDelete}/> : <></>}
             
         </div>
         <img
@@ -51,10 +48,7 @@ const PostCard = ({post, profile, handleDeletedPost}) => {
           
           <CommentsContainer post={post} profile={profile}/>
           </div>
-          
-        {/* </div> */}
       </div>
-        
     </div>
   )
 }

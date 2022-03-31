@@ -14,7 +14,6 @@ const NavBar = ({ user, handleLogout, profile, handleSubmitSearch, handleSearchP
           <div>
           
             <form onSubmit={handleSubmitSearch}>
-              {/* value={search.query} */}
               <input onChange={handleSearchProfile} name='query' type='search' placeholder='🔍 Search' aria-label="Search"/>
             </form>
           </div>

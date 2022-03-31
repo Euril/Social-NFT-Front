@@ -35,7 +35,6 @@ const Messages = ({ profile }) => {
     })[0]
 
     if (activeChatHistory) {
-      
       setAllChatHistories(allChatHistories)
       setActiveChatHistory(activeChatHistory)
       return activeChatHistory
@@ -49,7 +48,6 @@ const Messages = ({ profile }) => {
   }
 
   const getUpToDateProfiles = async (chatHistories) => {
-    //console.log('hi')
     let profileSet = new Set()
     for (let chatHistory of chatHistories) {
       for (let profileID of chatHistory.chatHistoryMembers) {
@@ -70,14 +68,12 @@ const Messages = ({ profile }) => {
         return chatHistory
       }
     })
-
     setAllChatHistories(tempAllChatHistories)
   }
 
   const handleAddMessage = (messageDataObject) => {
     addMessage(messageDataObject)
     .then(upDatedActiveChatHistory => {
-      console.log('Updated Active Chat History', upDatedActiveChatHistory)
       if (upDatedActiveChatHistory) {
         setActiveChatHistory(upDatedActiveChatHistory)
         upDateChatHistories(upDatedActiveChatHistory)
@@ -95,7 +91,6 @@ const Messages = ({ profile }) => {
    .then(populatedProfiles => setUpToDateProfiles(populatedProfiles))
  },[allChatHistories])
 
-
   return (
     <React.Fragment key={profile._v}> 
     {allChatHistories && activeChatHistory ? 
@@ -109,7 +104,6 @@ const Messages = ({ profile }) => {
         allChatHistories={allChatHistories} 
         upToDateProfiles={upToDateProfiles} 
         setActiveChatHistory={setActiveChatHistory}
-       
       />
       </div>
       <div className={styles.messagesContainer}>

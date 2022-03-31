@@ -11,7 +11,6 @@ const CommentsContainer = ({post, profile}) => {
 
     const commentFormElement = useRef()
     useEffect(()=> {
-        //console.log('in useEffect, postState: ', postState)
     }, [postState])
     
     const handleCommentFormChange = evt => {
@@ -26,10 +25,7 @@ const CommentsContainer = ({post, profile}) => {
     const handleDeletedComment = (deletedCommentID) => {
         let tempComments = postState.comments
         try {
-         // console.log('deletedPost: ',deletedPost, 'temp news feed: ', tempNewsFeed)
-         // console.log('length before: ', tempNewsFeed.length)
           tempComments= tempComments.filter(comment => comment._id != deletedCommentID)
-         // console.log('length after: ', tempNewsFeed.length)
         }
     
         catch (error) {

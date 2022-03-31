@@ -10,13 +10,12 @@ const CommentCard = ({comment, postID, profileID, handleDeletedComment}) => {
   const handleCommentLike = () => {
     toggleLike({commentID: comment._id, postID, profileID})
     .then(tempCommentLikedBy => setCommentLikedBy(tempCommentLikedBy))
-}
+  }
 
-const handleDeleteComment = () => {
-  //console.log('clicked', post._id)
-  deleteComment({commentID: comment._id, resourceAuthorID: comment.author, postID})
-  .then(deletedCommentID => handleDeletedComment(deletedCommentID))
-}
+  const handleDeleteComment = () => {
+    deleteComment({commentID: comment._id, resourceAuthorID: comment.author, postID})
+    .then(deletedCommentID => handleDeletedComment(deletedCommentID))
+  }
 
   return (
     <li>
@@ -30,7 +29,6 @@ const handleDeleteComment = () => {
              :
              <></>  
           }
-             
 
           </span> 
           <div className={styles.comment}>
