@@ -112,8 +112,6 @@ const AddPost = ({profile, handleAddPost}) => {
   }
 
   
-
-
   return (
     <>
       {
