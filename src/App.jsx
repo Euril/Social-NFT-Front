@@ -17,6 +17,7 @@ import AddPost from './pages/AddPost/AddPost'
 import EditPost from './pages/EditPost/EditPost'
 import EditProfile from './pages/Profile/EditProfile'
 import styles from './components/NavBar/NavBar.module.css'
+import NewProfileEdit from './pages/Profile/NewProfileEdit'
 
 // Have fun, y'all. ;)
 
@@ -158,6 +159,10 @@ const App = () => {
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/profiles/setup"
+          element={<NewProfileEdit loggedInUser={user} profile={profile} setProfile={setProfile} />}
         />
         <Route
           path="/login"
