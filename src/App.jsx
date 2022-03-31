@@ -38,16 +38,33 @@ const App = () => {
 
   const navigate = useNavigate()
 
+  // useEffect(() => {
+  //   if (user) {
+  //     profileService.getProfile(user.email)
+  //     .then(profileData => {
+  //       setProfile(profileData)
+  //     })
+  //   } else {
+  //     navigate('login')
+  //   }
+  // }, [user])
+
   useEffect(() => {
     if (user) {
       profileService.getProfile(user.email)
       .then(profileData => {
         setProfile(profileData)
       })
+      profileService.getAllProfiles()
+      .then(profiles => { 
+        console.log('This is PRofile: !', profiles)
+        setTempProfiles(profiles)
+      })
     } else {
       navigate('login')
     }
   }, [user])
+
 
   useEffect(()=>{
   //  console.log('last post: ', profile?.posts?.at(-1))
@@ -106,14 +123,15 @@ const App = () => {
   }
 
   //Second useEffect when page loads fills temp profiles with all profiles
-  useEffect(()=> {
-    profileService.getAllProfiles()
-    .then(profiles => { 
-      console.log('This is PRofile: !', profiles)
-      setTempProfiles(profiles)
-    })
-  },[])
+  // useEffect(()=> {
+  //   profileService.getAllProfiles()
+  //   .then(profiles => { 
+  //     console.log('This is PRofile: !', profiles)
+  //     setTempProfiles(profiles)
+  //   })
+  // },[])
 
+  
   //does the actual filtering for search
   const handleSubmitSearch = evt => {
     evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away

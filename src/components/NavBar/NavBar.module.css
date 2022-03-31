@@ -7,16 +7,21 @@
     align-items: center;
     /* text-align: center; */
     background-color: white;
-    font-size: 30px;
     /* position: relative; */
+}
+
+.home{
+    padding-left: 100px;
+    font-size: 30px;    
 }
 
 .navContainer h2 {
     font-family: 'Dancing Script', cursive;
-    padding-left: 100px;
+    /* padding-left: 100px; */
     text-shadow: 1px 1px 2px grey;
     text-underline-position: under;
     text-decoration-color: none;
+    
 }
 
 .rightNav {
@@ -31,13 +36,41 @@
     text-decoration: none;
     color: inherit;
     color: rgb(28, 31, 31);
+    font-size:30px;
 }
 
 .navContainer input{
     border-radius:30px;
     padding: 5px 10px;
+    width:100%;
+    min-width: 100px;
 }
 
 /* .mainContent{
     padding-top:60px;
 } */
+
+@media screen and (max-width:1024px){
+    .home{
+        padding-left: 1px;
+        font-size: 20px;    
+    }   
+    .navContainer i {
+        padding: 10px 10px 10px 5px;
+        font-size:20px;
+    }
+    .rightNav {
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width:650px){
+    .home{
+        padding-left: 1px;
+        font-size: 16px;    
+    } 
+    .navContainer i {
+        padding: 8px 8px 8px 5px;
+        font-size:15px;
+    }
+}
