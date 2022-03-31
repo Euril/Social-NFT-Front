@@ -1,6 +1,6 @@
 import styles from './Explore.module.css'
 import loading from '../loading.module.css'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, Navigate, useLocation } from 'react-router-dom'
 import { getExploreFeed } from '../../services/postService'
 import PostCard from '../../components/PostCard/PostCard.jsx'
@@ -44,7 +44,8 @@ const handleClose = () => {
 }
 
 return (
-  <>
+  <React.Fragment key={profile._v}>
+    
   {
     exploreFeed ?
     <div className={styles.container}>
@@ -53,9 +54,7 @@ return (
           
             {exploreFeed.map(post => (
               <div 
-                className={styles.col}
-                key={profile._id} 
-                onClick={() => {
+                className={styles.col} onClick={() => {
               setModalPost(post); handleShow();}}>
       
                 <img
@@ -68,7 +67,6 @@ return (
                 post={modalPost}  
                 profile={profile} 
                 show={show}
-                
               />
               </div>
             ))}
@@ -79,7 +77,7 @@ return (
       <i class="fas fa-spinner fa-pulse fa-2x"></i>
     </div>
   }
-  </>
+  </React.Fragment>
 
   
   )

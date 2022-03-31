@@ -19,7 +19,7 @@ import EditProfile from './pages/Profile/EditProfile'
 import styles from './components/NavBar/NavBar.module.css'
 import NewProfileEdit from './pages/Profile/NewProfileEdit'
 
-// Have fun, y'all. ;)
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -39,16 +39,6 @@ const App = () => {
 
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if (user) {
-  //     profileService.getProfile(user.email)
-  //     .then(profileData => {
-  //       setProfile(profileData)
-  //     })
-  //   } else {
-  //     navigate('login')
-  //   }
-  // }, [user])
 
   useEffect(() => {
     if (user) {
@@ -113,42 +103,21 @@ const App = () => {
         return post
       }
     })
-    //await setProfile(tempProfile)
-    //navigate('/')
     profile.posts = tempProfile.posts
     setReturnedPost(editedPost)
     setProfile({...tempProfile, navigateTo: '/'})
-    //console.log('updated before: ', updated)
-   // setUpdated(updated=>{return 1 + updated})
-    //console.log('updated after: ', updated)
   }
 
-  //Second useEffect when page loads fills temp profiles with all profiles
-  // useEffect(()=> {
-  //   profileService.getAllProfiles()
-  //   .then(profiles => { 
-  //     console.log('This is PRofile: !', profiles)
-  //     setTempProfiles(profiles)
-  //   })
-  // },[])
-
-  
-  //does the actual filtering for search
+ 
   const handleSubmitSearch = evt => {
     evt.preventDefault() //<- not sure why this is needed but is needed to prevent search results from being refreshed away
-    // getProfileList()
-    console.log('ARRAY OF ALL PROFILES', tempProfiles)
     setSearchResults({
       tempProfiles: tempProfiles.filter(profile => profile.email.includes(search.query))
     })
     navigate('/search')
   }
-  //takes the results from navbar
   const handleSearchProfile = evt => {
-    //console.log('SEARCH PROFILE VALUE', evt.target.value)
-    // console.log('SEARCH PROFILE VALUE', getSearch)
     setSearch({...search, [evt.target.name]: evt.target.value})
-    // console.log('GET SEARCH', search.query)
   }
 
   return (
