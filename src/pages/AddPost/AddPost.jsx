@@ -11,6 +11,12 @@ const AddPost = ({profile, handleAddPost}) => {
 
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
+  if (window.ethereum) {
+      
+  } else {
+
+  }
+
   // MetaMask Login
   const login = async () => {
       if (!isAuthenticated) {
@@ -45,7 +51,6 @@ const AddPost = ({profile, handleAddPost}) => {
 
 
   const handleChange = evt => {
-    // console.log('HANDLE CHANGE EVENT hitting', evt.target.value)
     setFormData({...formData, [evt.target.name]: evt.target.value})
     char= (evt.target.value)
   }
@@ -55,25 +60,34 @@ const AddPost = ({profile, handleAddPost}) => {
   }
   const handleSubmit = async (evt) => {
     evt.preventDefault()
+
     console.log('hello handle submit')
     const postFormData = new FormData()
     postFormData.append('images', formData.images)
     console.log("🚀 ~ formData.images", formData.images);
     postFormData.append('caption', formData.caption)
+
+    const checkFormData = (postFormData) => {
+      for (let entry of postFormData.entries()) {
+        console.log('entry: ', entry)
+      }
+    }
         
     if (!submitted) {
       setSubmitted(true)
-      
-      handleAddPost(postFormData)
+      gogo()
+      .then(tempIPFSURL => {postFormData.append('MetaDataURL', tempIPFSURL); checkFormData(postFormData); handleAddPost(postFormData)})
+      //handleAddPost(postFormData)
     }
 
-    gogo()
+    //gogo()
   }
 
   const gogo = async () => {
     const image = await uploadImage()
-    let returnedAfterUpload = await uploadMetadata(image)
-    console.log(returnedAfterUpload)
+    let returnedURL = await uploadMetadata(image)
+    console.log('returnedURL: ',returnedURL)
+    return returnedURL
   }
   
   const uploadImage = async () => {
@@ -96,6 +110,8 @@ const AddPost = ({profile, handleAddPost}) => {
     const file = new Moralis.File('file.json' , {base64: btoa(JSON.stringify(metadata))})
     await file.saveIPFS()
     console.log('uploaded object: ',file._url)
+    return file._url
+    //setFormData({...formData,IPFS_URL: file._url})
   }
 
   
@@ -112,6 +128,9 @@ const AddPost = ({profile, handleAddPost}) => {
         <hr></hr>
       </div>
       <div>
+        {
+          window.ethereum ?
+
         <form action="" ref={formElement} onSubmit={handleSubmit}>
           <input 
             type="file" 
@@ -142,6 +161,16 @@ const AddPost = ({profile, handleAddPost}) => {
           </div>
           <button type="submit" >SHARE</button>
         </form>
+        :
+
+        <div>
+          <h2>
+
+          Please download MetaMask at <a href="http://metamask.io/download">metamask.io</a>
+          </h2>
+        </div>
+
+      }
       </div>
     </div>
     :

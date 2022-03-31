@@ -84,7 +84,7 @@ const App = () => {
 
   const handleEditPost = async (editedPostData) => {
     const editedPost = await postService.update(editedPostData)
-   // console.log('after editing post, edited post: ', editedPost)
+    console.log('after editing post, edited post: ', editedPost)
     let tempProfile = {...profile}
     tempProfile.posts = tempProfile.posts.map((post) => {
       try {
