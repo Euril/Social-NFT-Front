@@ -51,7 +51,12 @@ const CommentsContainer = ({post, profile}) => {
             <div className={styles.commentSection}>
             {
                 postState.comments?.map(comment => (
-                    <CommentCard comment={comment} postID={post._id} profileID={profile._id} handleDeletedComment={handleDeletedComment}/>
+                    <CommentCard 
+                        comment={comment} 
+                        postID={post._id} 
+                        profileID={profile._id} handleDeletedComment={handleDeletedComment}
+                        key={profile._id}
+                    />
                 ))
             }
             </div>

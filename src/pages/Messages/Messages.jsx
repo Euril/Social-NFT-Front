@@ -7,20 +7,16 @@ import { useParams } from "react-router-dom"
 import { getChatHistories, createChatHistory, addMessage } from "../../services/messageService"
 import { getSelectProfiles } from "../../services/profileService"
 
-//console.log('hello world')
-
 const Messages = ({ profile }) => {
   const [allChatHistories, setAllChatHistories] = useState([])
   const [activeChatHistory, setActiveChatHistory] = useState()
   const [upToDateProfiles, setUpToDateProfiles] = useState()
-  //const [activeChatHistory, setActiveChatHistory] = useState()
+
   let params = useParams()
   
   const initActiveChatHistory = async (othersProfileID, allChatHistories) => {
-   //console.log('init - allchathistories: ', allChatHistories)
     if (othersProfileID == profile._id) return 
 
-    //if no params, so if click on message page directly
     if (!othersProfileID) {
       setAllChatHistories(allChatHistories)
       setActiveChatHistory(allChatHistories[0])
@@ -39,7 +35,7 @@ const Messages = ({ profile }) => {
     })[0]
 
     if (activeChatHistory) {
-      //console.log('returned active chat history: ', activeChatHistory)
+      
       setAllChatHistories(allChatHistories)
       setActiveChatHistory(activeChatHistory)
       return activeChatHistory
@@ -61,10 +57,8 @@ const Messages = ({ profile }) => {
       }
     }
     let profileList = [...profileSet]
-    //console.log('profile set: ', profileSet)
-    //console.log('about to call get select profiles service')
     let populatedProfiles = await getSelectProfiles(profileList) 
-    //console.log('populated profiles', populatedProfiles)
+
     return populatedProfiles
   }
 
@@ -81,7 +75,6 @@ const Messages = ({ profile }) => {
   }
 
   const handleAddMessage = (messageDataObject) => {
-    //console.log('message to add: ', message)
     addMessage(messageDataObject)
     .then(upDatedActiveChatHistory => {
       console.log('Updated Active Chat History', upDatedActiveChatHistory)
@@ -94,14 +87,7 @@ const Messages = ({ profile }) => {
 
   useEffect(()=>{
    getChatHistories()
-   .then(tempAllChatHistories => initActiveChatHistory(params.id, tempAllChatHistories))
-   
-   
-
-  //  .then(tempAllChatHistories => {setAllChatHistories(tempAllChatHistories); return tempAllChatHistories})
-  //  .then((tempAllChatHistories)=>initActiveChatHistory(params.id, tempAllChatHistories))
-  //  .then(tempActiveChatHistory => setActiveChatHistory(tempActiveChatHistory))
-   
+   .then(tempAllChatHistories => initActiveChatHistory(params.id, tempAllChatHistories))   
  },[])
 
  useEffect(()=>{
@@ -110,19 +96,12 @@ const Messages = ({ profile }) => {
  },[allChatHistories])
 
 
-  // useEffect(()=>{
-  //   let returned = initActiveChatHistory(params.id)
-  //   console.log('returned: ', returned)
-  // },[allChatHistories])
-  // console.log('our params: ', params)
-  
-
   return (
     <> 
     {allChatHistories && activeChatHistory ? 
     <div className={styles.container}>
     <div className={styles.messages}>
-      {/* <h1>All Chat Histories Length: {allChatHistories?.length}</h1> */}
+      
       <div className={styles.chatHistoryContainer}>
         <ChatHistoryContainer 
         activeChatHistory={activeChatHistory} 
@@ -130,6 +109,7 @@ const Messages = ({ profile }) => {
         allChatHistories={allChatHistories} 
         upToDateProfiles={upToDateProfiles} 
         setActiveChatHistory={setActiveChatHistory}
+        key={profile._v}
       />
       </div>
       <div className={styles.messagesContainer}>
@@ -137,6 +117,7 @@ const Messages = ({ profile }) => {
         activeChatHistory={activeChatHistory} 
         profile={profile} 
         handleAddMessage={handleAddMessage}
+        key={profile._v}
       />
       </div>
     </div>
