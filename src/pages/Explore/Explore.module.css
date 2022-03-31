@@ -56,3 +56,29 @@
 .displayNone {
   display: none;
 }
+
+@media screen and (max-width:1024px){
+  .container{
+    max-width: 100%;
+    margin: 2px auto;
+  }
+
+  .containerRow{
+    padding:4px;
+  }
+
+  .col{
+    padding: 4px;
+  }
+}
+
+@media screen and (max-width:650px){
+  .containerRow{
+    padding:2px;
+  }
+
+  .col{
+    flex:45%;
+    padding: 2px;
+  }
+}
