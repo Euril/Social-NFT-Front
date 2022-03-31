@@ -22,7 +22,7 @@ const Landing = ({ user, profile, returnedPost}) => {
       console.log(error)
     }
     
-    setNewsFeed(tempNewsFeed)
+    setNewsFeed({...tempNewsFeed})
   } 
   
   useEffect(() => {

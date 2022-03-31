@@ -3,16 +3,32 @@ import { Link } from 'react-router-dom';
 import MintNFT from './MintNFT';
 import SocialNft from '../../artifacts/contracts/MyNFT.sol/SocialNFT.json'
 import { ethers } from 'ethers'
+import { useState, useEffect } from 'react'
 
 function OurProfilePage ({profToRender, loggedInUser, profile}) {
 
-  const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+  const [connectedToBlockchain, setConnectedToBlockchain] = useState()
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  let contractAddress
+  let provider
+  let signer
+  let contract
 
-  const signer = provider.getSigner()
+  useEffect(()=>{
+    try {
+      contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+      provider = new ethers.providers.Web3Provider(window.ethereum)
+      signer = provider.getSigner()
+      contract = new ethers.Contract(contractAddress, SocialNft.abi, signer)
+      setConnectedToBlockchain(true)
+    } catch (error)  {
+      setConnectedToBlockchain(false)
+    }
+  },[])
 
-  const contract = new ethers.Contract(contractAddress, SocialNft.abi, signer)
+ 
+
+
 
 
   return (
