@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 
 
-const MintNFT = ({contractAddress, signer, provider, contract}) => {
+const MintNFTMapped = ({contractAddress, signer, provider, contract}) => {
     const [formData, setFormData] = useState({MetaDataURI: ""})
 
     const handleChange = (e) => {
@@ -61,4 +61,4 @@ const MintNFT = ({contractAddress, signer, provider, contract}) => {
      );
 }
  
-export default MintNFT;
+export default MintNFTMapped;

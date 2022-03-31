@@ -61,7 +61,9 @@ return (
                 src={post.images}
                 alt='post'
                 />
+                
               <ModalPost 
+                
                 handleClose={handleClose} 
                 handleDeletedPost={handleDeletedPost} 
                 post={modalPost}  
