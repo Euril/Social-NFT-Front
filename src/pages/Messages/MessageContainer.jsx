@@ -12,11 +12,12 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
         setFormData({...formData, text: evt.target.value})    
     }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault()
         formElement.current[0].value = ""
         //console.log('form element',formElement.current[0].value)
-        handleAddMessage(formData)
+        let returnMessage = await handleAddMessage(formData)
+        console.log('Return Message is: ', returnMessage)
         console.log('active Chat History !!!!!!!!!!!!', activeChatHistory)
         
     }
@@ -34,7 +35,24 @@ const MessageContainer = ({activeChatHistory, profile, handleAddMessage}) => {
                <div className={styles.messageBody}>           
                 {
                     activeChatHistory?.messages.map(message=>(
-                        <div>{message.text}</div>
+                        <>
+                        
+                        <div>
+                        <h6>{message.date.slice(0,10)}</h6>
+                        {/* <img src={message?.author.profilePicture} alt='pic'/>   */}
+                        
+                        </div>
+                            {message.author !== profile._id ?
+                        <div className={styles.Left}>
+                            <h5>{message.author}</h5>
+                            <p>{message.text}</p>
+                        </div>
+                        :
+                        <div className={styles.Right}>
+                            <p>{message.text}</p>
+                        </div>
+                            }
+                        </>
                     ))
                 }
                 </div>  
