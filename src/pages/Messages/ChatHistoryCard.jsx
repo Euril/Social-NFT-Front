@@ -29,29 +29,54 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
   },[chatHistory, upToDateProfiles])
 
   return (
-    <React.Fragment  key={profile._v}>
-      <div className={styles.chatHistoryCard}>
-        <div >
-          {/* placeholder for avatar */}
-          <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
-        </div>
-        <div>
-          {
-          otherProfilesEmail ?
-          
-            <div className={styles.chatHistoryNames} onClick={handleClick}>
-                <Link to=''>{otherProfilesEmail?.email}</Link>
-                
-            </div>
-          
-          :
 
-            <></>
-          }
-        </div>
+//     <React.Fragment  key={profile._v}>
+//       <div className={styles.chatHistoryCard}>
+//         <div >
+//           {/* placeholder for avatar */}
+//           <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
+//         </div>
+//         <div>
+//           {
+//           otherProfilesEmail ?
+          
+//             <div className={styles.chatHistoryNames} onClick={handleClick}>
+//                 <Link to=''>{otherProfilesEmail?.email}</Link>
+                
+//             </div>
+          
+//           :
+
+//             <></>
+//           }
+//         </div>
       
+//       </div>
+//     </React.Fragment>
+
+    <Link to=''>
+    <div className={styles.chatHistoryCard}>
+      <div >
+        <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
       </div>
-    </React.Fragment>
+      <div>
+         {
+        otherProfilesEmail ?
+        
+          <div className={styles.chatHistoryNames} onClick={handleClick}>
+              {otherProfilesEmail?.email}
+              
+          </div>
+        
+        :
+
+          <></>
+        }
+      </div>
+     
+    </div>
+    </Link>
+
   )
 }
 
