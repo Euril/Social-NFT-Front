@@ -13,17 +13,20 @@
   box-shadow: 0px 0px 4px grey
 }
 
+
+
 .caption{
-    font-size: 14px;
+    font-size: 19px;
     width:97%;
     height: 100px;
     border: 1px solid #ccc;
     border-radius: 4px;
     /* resize: vertical; */
     padding-left: 10px;
-    resize:vertical;
+    resize: none;
     padding-top: 10px;
     background-color: white;
+
 }
 
 button {
@@ -68,4 +71,29 @@ input[type=file]::file-selector-button {
   padding: 10px;
   color:white;
   cursor:pointer;
+}
+
+.metamask > button {
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  cursor: pointer;
+  background-color: rgb(255, 146, 30);
+}
+
+.photo {
+  font-size: 30px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button:hover{
+  background-color: rgb(4, 116, 177);
+  color: white;
+}
+input:hover{
+  background-color: rgb(4, 116, 177);
+  color: white;
 }
