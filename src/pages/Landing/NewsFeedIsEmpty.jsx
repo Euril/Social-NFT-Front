@@ -42,7 +42,7 @@ const NewsFeedIsEmpty = () => {
         </>
         :
         <>
-        <h3>No Profile Suggestions</h3>
+        <h3></h3>
         </>
     }
     </>

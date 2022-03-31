@@ -19,6 +19,8 @@ const ModalPost = ({post, profile, show, handleClose, handleDeletedPost}) => {
   }
 
   return (
+    <div >
+   
     <div className={styles.modal} onClick={evt => evt.stopPropagation()}>
       <div className={styles.modalBody} >
       <div className={styles.card} >
@@ -52,6 +54,7 @@ const ModalPost = ({post, profile, show, handleClose, handleDeletedPost}) => {
         </div>
       </div>
       </div>
+    </div>
     </div>
     // <div className={styles.postCardContainer}>
     //   <hr />
