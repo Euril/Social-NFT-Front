@@ -1,7 +1,10 @@
 # ***Social NFT*** 
 
-Deployed through Heroku 
-[http://socialnft.herokuapp.com/]
+Deployed through Netlify 
+[https://social-nft.netlify.app/login]
+
+[Backend Repo] (https://github.com/mattjacobs93/social-nft-back-end) 
+[Smart Contract Repo] (https://github.com/mattjacobs93/nft-social-hardhat)
 <!-- we can add images of some pages here -->
 
 ### *Matt Jacobs, Anthony Madia, Eugene Rillo* <br>
@@ -59,4 +62,3 @@ How to create a Modal Component in React from basic to advanced?
 - [ ] Add Modals to Profile Images
 - [ ] AAU, I can click on likes and see who liked the post
 - [ ] AAU, I can see click on the content identifier and see it on IPFS
-- [X] completed something 4
