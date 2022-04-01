@@ -36,6 +36,7 @@ Hardhat was used to test our smart contract writter in Solidity.
 ***Etherium Waffle*** |
 ***Ether.js*** |
 ***OpenZepplin*** |
+***Goerli*** |
 
 
 ## Planning 
