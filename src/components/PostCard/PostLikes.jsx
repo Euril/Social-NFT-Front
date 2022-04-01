@@ -14,8 +14,6 @@ const handleLike = evt => {
     profileID: profile._id,
     postID: post._id
   }).then(likedByTemp => setLikedBy(likedByTemp))
-  //console.log('likedbytemp: ',likedByTemp)
-  
 } 
 
 return (
