@@ -1,6 +1,6 @@
 import { ethers } from "ethers"
 import { useState, useEffect } from "react"
-
+import styles from './MintNFT.module.css'
 
 
 
@@ -50,7 +50,7 @@ const MintNFTMapped = ({contractAddress, signer, provider, contract, post}) => {
     }
 
     return ( 
-        <div>
+        <div className={styles.mintButton}>
             <form onSubmit={handleSubmit}>
                 <button type="submit">Mint NFT</button>
             </form>
