@@ -59,11 +59,19 @@ h3{
 .chatHistories div:not(:first-child){
     border-top: none;
 } 
+.linkArea{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
 
 .chatHistoryCard {
     text-align: center;
-    padding:30px;
+    /* padding:30px; */
 }
+
 .chatHistoryCard img{
     float:left;
     text-align:left;

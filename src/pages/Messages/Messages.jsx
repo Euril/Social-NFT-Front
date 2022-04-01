@@ -93,33 +93,33 @@ const Messages = ({ profile }) => {
 
   return (
     <React.Fragment key={profile._v}> 
-    {allChatHistories && activeChatHistory ? 
-    <div className={styles.container}>
-    <div className={styles.messages}>
-      
-      <div className={styles.chatHistoryContainer}>
-        <ChatHistoryContainer 
-        activeChatHistory={activeChatHistory} 
-        profile={profile} 
-        allChatHistories={allChatHistories} 
-        upToDateProfiles={upToDateProfiles} 
-        setActiveChatHistory={setActiveChatHistory}
-      />
-      </div>
-      <div className={styles.messagesContainer}>
-        <MessageContainer 
-        activeChatHistory={activeChatHistory} 
-        profile={profile} 
-        handleAddMessage={handleAddMessage}
-      />
-      </div>
-    </div>
-    </div>
-    :
-        <div className={loading.loading}>
-          <i class="fas fa-spinner fa-pulse fa-2x"></i>
+      {/* {allChatHistories && activeChatHistory ?  */}
+      <div className={styles.container}>
+      <div className={styles.messages}>
+        
+        <div className={styles.chatHistoryContainer}>
+          <ChatHistoryContainer 
+          activeChatHistory={activeChatHistory} 
+          profile={profile} 
+          allChatHistories={allChatHistories} 
+          upToDateProfiles={upToDateProfiles} 
+          setActiveChatHistory={setActiveChatHistory}
+        />
         </div>
-    }
+        <div className={styles.messagesContainer}>
+          <MessageContainer 
+          activeChatHistory={activeChatHistory} 
+          profile={profile} 
+          handleAddMessage={handleAddMessage}
+        />
+        </div>
+      </div>
+      </div>
+      {/* :
+          <div className={loading.loading}>
+            <i class="fas fa-spinner fa-pulse fa-2x"></i>
+          </div>
+      } */}
     </React.Fragment>
   )
 }

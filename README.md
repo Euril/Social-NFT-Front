@@ -1,7 +1,6 @@
 # ***Social NFT*** 
 
-Deployed through Heroku 
-[http://socialnft.herokuapp.com/]
+
 <!-- we can add images of some pages here -->
 
 ### *Matt Jacobs, Anthony Madia, Eugene Rillo* <br>

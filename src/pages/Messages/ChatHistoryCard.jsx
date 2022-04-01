@@ -49,8 +49,8 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
 //       </div>
 //     </React.Fragment>
 <React.Fragment  key={profile._v}>
-    <Link to=''>
-    <div className={styles.chatHistoryCard}>
+    <Link to='' className={styles.linkArea} onClick={handleClick}>{
+    <div className={styles.chatHistoryCard} >
       <div >
         <img src={otherProfilesEmail?.profilePicture} alt='profile'/>
       </div>
@@ -58,7 +58,7 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
          {
         otherProfilesEmail ?
         
-          <div className={styles.chatHistoryNames} onClick={handleClick}>
+          <div className={styles.chatHistoryNames} >
               {otherProfilesEmail?.email}
               
           </div>
@@ -68,8 +68,8 @@ const ChatHistoryCard = ({chatHistory, profile, upToDateProfiles, setActiveChatH
           <></>
         }
       </div>
-     
     </div>
+    }
     </Link>
     </React.Fragment>
   )
